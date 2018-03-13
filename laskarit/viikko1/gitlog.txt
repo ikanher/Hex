@@ -1,0 +1,115 @@
+commit fcc4105b315564b8a2b0d01327c4b81f18d28d59
+Author: Aki Rehn <aki.rehn@helsinki.fi>
+Date:   Tue Mar 13 15:42:49 2018 +0200
+
+    remove file1 and rename file2 to file22
+
+ tiedostoja/file1  | 0
+ tiedostoja/file2  | 0
+ tiedostoja/file22 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 3316624ccf46e0095b0f2c91fe82939150b03bb0
+Author: Aki Rehn <aki.rehn@helsinki.fi>
+Date:   Tue Mar 13 15:41:10 2018 +0200
+
+    add a new directory with empty files
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 0e2d7a729202c3261036549e132c57f01860b1de
+Author: Aki Rehn <aki.rehn@helsinki.fi>
+Date:   Tue Mar 13 15:38:12 2018 +0200
+
+    commit some more changes
+
+ eka.txt    | 3 +--
+ kolmas.txt | 4 +++-
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+commit 471b8eccd0c911d41d55ad210be90e96f8b75574
+Author: Aki Rehn <aki.rehn@helsinki.fi>
+Date:   Tue Mar 13 15:36:55 2018 +0200
+
+    rename tiedosto.txt to eka.txt
+
+ eka.txt      | 6 ++++++
+ tiedosto.txt | 6 ------
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+commit 80070e07d9d52013388d1f5abf5673c168e45fdf
+Author: Aki Rehn <aki.rehn@helsinki.fi>
+Date:   Tue Mar 13 15:36:24 2018 +0200
+
+    remove toinen.txt
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit a5f1d3ca2f60b450b26436a5ddb362f055157141
+Author: Aki Rehn <aki.rehn@helsinki.fi>
+Date:   Tue Mar 13 15:36:00 2018 +0200
+
+    some more changes to the text contents
+
+ tiedosto.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit 84dac36564892a1f2130241d85a39121fc4bd7e6
+Author: Aki Rehn <aki.rehn@helsinki.fi>
+Date:   Tue Mar 13 15:34:55 2018 +0200
+
+    add even more text
+
+ tiedosto.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+commit 0f8048ec6ffa6b6eb17cf488079efe5d986ce863
+Author: Aki Rehn <aki.rehn@helsinki.fi>
+Date:   Tue Mar 13 15:34:04 2018 +0200
+
+    add a new directory and a new file
+
+ stuff/file.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 76657b77246c1d18c4508e6b537b106ffdf7fe2c
+Author: Aki Rehn <aki.rehn@helsinki.fi>
+Date:   Tue Mar 13 15:33:27 2018 +0200
+
+    some changes to the files
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 51b24fe48ad8bbbb115258a2aecfa4b380010639
+Author: Aki Rehn <aki.rehn@helsinki.fi>
+Date:   Tue Mar 13 15:32:52 2018 +0200
+
+    add a kolmas.txt
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 0990209a5d150e84e126598a7ae6d8e427f8efa0
+Author: Aki Rehn <aki.rehn@helsinki.fi>
+Date:   Tue Mar 13 15:32:11 2018 +0200
+
+    add toinen.txt and make a change to tiedosto.txt
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 7066e302b50bcef93023665a764051c85e50a403
+Author: Aki Rehn <aki.rehn@helsinki.fi>
+Date:   Tue Mar 13 15:30:25 2018 +0200
+
+    create tiedosto.txt
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
