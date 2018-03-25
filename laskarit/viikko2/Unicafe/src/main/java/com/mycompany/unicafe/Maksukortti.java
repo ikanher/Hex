@@ -6,7 +6,7 @@ public class Maksukortti {
     private int saldo;
  
     public Maksukortti(int saldo) {
-        this.saldo = saldo;
+        this.saldo = saldo * 100;
     }
  
     public int saldo() {
