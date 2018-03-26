@@ -4,8 +4,9 @@ Hex lautapeli projekti Helsingin Yliopiston _Ohjelmistotekniikan menetelmät_ ku
 
 ## Dokumentaatio
 
-[Vaatimusmäärittely](https://github.com/ikanher/otm-harjoitustyo/dokumentointi/vaatimusmaarittely.md)
-[Tuntikirjanpito](https://github.com/ikanher/otm-harjoitustyo/dokumentointi/tuntikirjanpito.md)
+[Vaatimusmäärittely](https://github.com/ikanher/otm-harjoitustyo/blob/master/dokumentointi/vaatimusmaarittely.md)
+
+[Tuntikirjanpito](https://github.com/ikanher/otm-harjoitustyo/blob/master/dokumentointi/tuntikirjanpito.md)
 
 # Assignments
 
