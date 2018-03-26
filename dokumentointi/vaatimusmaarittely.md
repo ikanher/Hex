@@ -4,7 +4,7 @@
 
 Sovelluksen tarkoituksena on tarjota tietokoneella pelattava versio _Hex_ lautapelistä.
 
-Lisätietoja itse pelistä löytyy esimerkiksi [Wikipediasta](https://en.wikipedia.org/wiki/Hex_(board_game).
+Lisätietoja itse pelistä löytyy esimerkiksi [Wikipediasta](https://en.wikipedia.org/wiki/Hex_(board_game)).
 
 Perusversiossa voi pelata vain yhden kokoisella pelilaudalla, _11x11_.
 
