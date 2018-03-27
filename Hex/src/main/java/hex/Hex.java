@@ -8,7 +8,6 @@ package hex;
 import hex.logic.Color;
 import hex.logic.Graph;
 import hex.logic.Player;
-import hex.ui.HexameterTest;
 
 /**
  *
