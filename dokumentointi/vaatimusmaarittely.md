@@ -31,15 +31,13 @@ Pelaajat voivat syöttää nimensä.
 
 Pelaajat voivat vuorotellen sijoittaa pelinappuloita pelilaudalle.
 
-Sovellus osaa automaattisesti havainnoida kun jompi kumpi käyttäjistä on voittanut pelin, eli onnistunut yhdistämään pelinappuloilla yhtenäisen linjan omasta pelilaudan päädystään vastakkaiseen päätyyn.
+Perusversiossa pelin lopun määrittelevät pelaajat itse, eli pelaajilla on mahdollisuus lopettaa peli ja ilmoittaa pelin voittaja.
 
-On syytä huomioida, että tasapeli ei ole pelissä mahdollinen.
-
-Perusversiossa tuetaan vain yhden kokoista pelilautaa.
+Perusversiossa tuetaan vain yhden kokoista pelilautaa ja pelaajat joutuvat itse päättelemään voittajan.
 
 ### Pelin jälkeen
 
-Käyttäjä voi aloittaa uuden peli, vaihtaa pelaajia tai siirtyä katselemaan tilastoja aiemmista peleistä.
+Käyttäjä voi aloittaa uuden pelin, vaihtaa pelaajia tai siirtyä katselemaan tilastoja muiden pelaajien voitoista ja tappioista.
 
 ### Tilastonäkymässä
 
@@ -49,6 +47,8 @@ Tilastonäkymässä näytetään tilastoja eri pelaajien voittojen ja tappioiden
 
 Perusversion jälkeen järjestelmää täydennetään ajan salliessa esim. seuraavilla toiminnallisuuksilla
 
+- peli osaa tunnistaa, koska peli on voitettu
+- peli näyttää voittavan polun pelin jälkeen
 - pelilaudan koon valinta
 - kattavammat tilastot
 - värien konfiguroitavuus
