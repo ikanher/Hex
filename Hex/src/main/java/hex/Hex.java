@@ -5,8 +5,8 @@
  */
 package hex;
 
+import hex.logic.Board;
 import hex.logic.Color;
-import hex.logic.Graph;
 import hex.logic.Player;
 
 /**
@@ -14,19 +14,19 @@ import hex.logic.Player;
  * @author akir
  */
 public class Hex {
-    
+
     private static int SIZE = 5;
-    
+
     public static void main(String[] args) {
-        Graph g = new Graph(SIZE);
-        g.print();
-        
+        Board b = new Board(SIZE);
+        b.print();
+
         Player p1 = new Player("Player 1", Color.RED);
         Player p2 = new Player("Player 2", Color.BLUE);
 
-        g.setStone(p1, 1, 1);
-        g.setStone(p2, 5, 5);
+        b.playAt(p1, 1, 1);
+        b.playAt(p2, 5, 5);
 
-        g.print();
+        b.print();
     }
 }
