@@ -8,3 +8,4 @@
 | 27.3. | 3    | aloitettu pelilautaa vastaavan graafin rakentaminen |
 | 29.3. | 3    | mikä on paras tapa toteuttaa graafi? |
 | 3.4.  | 7    | tehty ensimmäinen versio pelilaudan backendista, liitetty alustava graafi siihen, muutama testi, dokumentointia |
+| 9.4.  | 3     | hyvin yksinkertainen tekstikäyttöliittymä |

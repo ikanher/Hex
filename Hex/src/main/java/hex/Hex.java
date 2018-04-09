@@ -5,9 +5,8 @@
  */
 package hex;
 
-import hex.logic.Board;
-import hex.logic.Color;
-import hex.logic.Player;
+import hex.ui.Text;
+import java.util.Scanner;
 
 /**
  *
@@ -15,18 +14,9 @@ import hex.logic.Player;
  */
 public class Hex {
 
-    private static int SIZE = 5;
-
     public static void main(String[] args) {
-        Board b = new Board(SIZE);
-        b.print();
-
-        Player p1 = new Player("Player 1", Color.RED);
-        Player p2 = new Player("Player 2", Color.BLUE);
-
-        b.playAt(p1, 1, 1);
-        b.playAt(p2, 5, 5);
-
-        b.print();
+        Scanner scanner = new Scanner(System.in);
+        Text ui = new Text(scanner);
+        ui.play();
     }
 }
