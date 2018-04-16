@@ -44,18 +44,21 @@ public class TextUI {
                 player = blue;
             }
 
-            System.out.println(player);
-            System.out.print("Give x coordinate: ");
-            int x = scanner.nextInt();
-            System.out.print("Give y coordinate: ");
-            int y = scanner.nextInt();
-            scanner.nextLine();
+            int x = askForCoordinate(player, "x");
+            int y = askForCoordinate(player, "y");
 
             board.playAt(player, y, x);
             System.out.println();
 
             i++;
         }
+    }
+
+    public int askForCoordinate(Player p, String str) {
+        System.out.println(p);
+        System.out.print("Give " + str + " coordinate: ");
+        int coord = scanner.nextInt();
+        return coord;
     }
 
     public void displayBoard() {
