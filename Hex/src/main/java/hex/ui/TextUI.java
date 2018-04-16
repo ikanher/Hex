@@ -6,23 +6,25 @@
 package hex.ui;
 
 import hex.logic.Board;
-import hex.logic.Color;
+import hex.logic.HexColor;
 import hex.logic.Player;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 /**
  *
  * @author akir
  */
-public class Text {
+public class TextUI {
+
     private Scanner scanner;
     private Board board;
     private static final int SIZE = 5;
 
-    private Player red = new Player("Red", Color.RED);
-    private Player blue = new Player("Blue", Color.BLUE);
+    private Player red = new Player("Red", HexColor.RED);
+    private Player blue = new Player("Blue", HexColor.BLUE);
 
-    public Text(Scanner scanner) {
+    public TextUI(Scanner scanner) {
         this.board = new Board(SIZE);
         this.scanner = scanner;
     }
@@ -34,7 +36,7 @@ public class Text {
         System.out.println("Use ctrl-c to quite the game.");
 
         while (true) {
-            board.print();
+            displayBoard();
 
             if (i % 2 == 0) {
                 player = red;
@@ -53,6 +55,26 @@ public class Text {
             System.out.println();
 
             i++;
+        }
+    }
+
+    public void displayBoard() {
+        System.out.println("Board: ");
+        for (int i = 1; i <= SIZE; i++) {
+            // print hex board like shape
+            StringBuilder sb = new StringBuilder(i + ":");
+            IntStream.range(0, i).forEach(x -> sb.append(" "));
+            System.out.print(sb.toString());
+            for (int j = 1; j <= SIZE; j++) {
+                if (board.getNodeAt(i, j).getColor() == HexColor.RED) {
+                    System.out.print("R");
+                } else if (board.getNodeAt(i, j).getColor() == HexColor.BLUE) {
+                    System.out.print("B");
+                } else {
+                    System.out.print(".");
+                }
+            }
+            System.out.println();
         }
     }
 }
