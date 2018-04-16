@@ -5,7 +5,9 @@
  */
 
 import hex.logic.Board;
+import hex.logic.HexColor;
 import hex.logic.Node;
+import hex.logic.Player;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -73,5 +75,35 @@ public class BoardTest {
         // bottom neighbors
         assertTrue(neighbors.contains(board.getNodeAt(2, 4)));
         assertTrue(neighbors.contains(board.getNodeAt(3, 4)));
+    }
+
+    @Test
+    public void testIsFreeWhenFree() {
+        assertTrue(board.isFree(1, 1));
+    }
+
+    @Test
+    public void testIsFree() {
+        Player p = new Player("Foo", HexColor.RED);
+        board.playAt(p, 1, 1);
+        assertFalse(board.isFree(1, 1));
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void testIllegalMoveThrows1() {
+        Player p = new Player("Foo", HexColor.RED);
+        board.playAt(p, 0, 1);
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void testIllegalMoveThrows2() {
+        Player p = new Player("Foo", HexColor.RED);
+        board.playAt(p, 1, 0);
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void testIllegalMoveThrows3() {
+        Player p = new Player("Foo", HexColor.RED);
+        board.playAt(p, SIZE + 1, 1);
     }
 }
