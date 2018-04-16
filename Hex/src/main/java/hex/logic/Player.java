@@ -11,14 +11,14 @@ package hex.logic;
  */
 public class Player {
     private String name;
-    private Color color;
+    private HexColor color;
 
-    public Player(String name, Color color) {
+    public Player(String name, HexColor color) {
         this.name = name;
         this.color = color;
     }
 
-    public Color getColor() {
+    public HexColor getColor() {
         return color;
     }
 

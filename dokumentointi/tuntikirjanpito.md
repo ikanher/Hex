@@ -8,4 +8,8 @@
 | 27.3. | 3    | aloitettu pelilautaa vastaavan graafin rakentaminen |
 | 29.3. | 3    | mikä on paras tapa toteuttaa graafi? |
 | 3.4.  | 7    | tehty ensimmäinen versio pelilaudan backendista, liitetty alustava graafi siihen, muutama testi, dokumentointia |
-| 9.4.  | 3     | hyvin yksinkertainen tekstikäyttöliittymä |
+| 9.4.  | 3    | hyvin yksinkertainen tekstikäyttöliittymä |
+| 12.4. | 4    | tutustumista graafisen käyttöliittyvän toteuttaviin kirjastoihin |
+| 13.4. | 4    | tutustumista graafisen käyttöliittyvän toteuttaviin kirjastoihin |
+| 15.4. | 6    | ensimmäinen version hex laudan graafisesta käyttöliittymästä |
+| 16.4. | 3    | graafinen käyttöliittymä |

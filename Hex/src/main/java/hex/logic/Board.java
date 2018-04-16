@@ -79,23 +79,17 @@ public class Board {
     }
 
     /**
-     * Prints the playing board in a very simple format.
+     * Checks if this board position is still playable
      *
+     * @param x x coordinate
+     * @param y y coordinate
+     * @return true if board position is free, else false
      */
-    public void print() {
-        System.out.println("Board: ");
-        for (int i = 1; i <= SIZE; i++) {
-
-            // print hex board like shape
-            StringBuilder sb = new StringBuilder(i + ":");
-            IntStream.range(0, i).forEach(x -> sb.append(" "));
-            System.out.print(sb.toString());
-
-            for (int j = 1; j <= SIZE; j++) {
-                System.out.print(board[i][j]);
-            }
-            System.out.println();
+    public boolean isFree(int x, int y) {
+        if (board[x][y].getColor() == HexColor.WHITE) {
+            return true;
         }
+        return false;
     }
 
     private void init() {

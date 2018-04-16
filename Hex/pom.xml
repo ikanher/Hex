@@ -17,6 +17,11 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.codetome.hexameter</groupId>
+            <artifactId>hexameter.core</artifactId>
+            <version>2017.1.0</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -32,7 +37,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>  
+            </plugin>
         </plugins>
-    </build>    
+    </build>
 </project>

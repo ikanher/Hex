@@ -9,6 +9,6 @@ package hex.logic;
  *
  * @author akir
  */
-public enum Color {
+public enum HexColor {
     WHITE, RED, BLUE
 }

@@ -32,7 +32,7 @@ public class Graph {
     /**
      * Adds a new edge from a node to another.
      *
-     * Just calls Node's addNeighbor methods in both ways, since this is an
+     * Calls Node's addNeighbor methods in both ways, since this is an
      * undirected graph.
      *
      * @param from the source Node object

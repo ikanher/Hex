@@ -15,7 +15,7 @@ Hex lautapeli projekti Helsingin Yliopiston _Ohjelmistotekniikan menetelmät_ ku
 Ohjelman voi suorittaa komennolla
 
 ```
-mvn compile exec:java -Dexec.mainClass=hex.Hex
+mvn compile exec:java -Dexec.mainClass=hex.ui.GUI
 ```
 
 ## Testaus

@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class Node {
 
-    private Color color = Color.WHITE;
+    private HexColor color = HexColor.WHITE;
     private List<Node> neighbors = new ArrayList<>();
     private int x;
     private int y;
@@ -42,8 +42,12 @@ public class Node {
         return y;
     }
 
-    public void setColor(Color color) {
+    public void setColor(HexColor color) {
         this.color = color;
+    }
+
+    public HexColor getColor() {
+        return color;
     }
 
     /**
@@ -68,13 +72,6 @@ public class Node {
 
     @Override
     public String toString() {
-        switch (this.color) {
-            case RED:
-                return "R";
-            case BLUE:
-                return "B";
-            default:
-                return ".";
-        }
+        return "(" + x + "," + y + "," + color + ")";
     }
 }

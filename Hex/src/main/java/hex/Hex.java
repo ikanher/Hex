@@ -5,7 +5,7 @@
  */
 package hex;
 
-import hex.ui.Text;
+import hex.ui.TextUI;
 import java.util.Scanner;
 
 /**
@@ -16,7 +16,7 @@ public class Hex {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Text ui = new Text(scanner);
+        TextUI ui = new TextUI(scanner);
         ui.play();
     }
 }
