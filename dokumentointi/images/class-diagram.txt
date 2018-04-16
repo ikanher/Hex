@@ -1,0 +1,1 @@
+[GUI]1-2[Player],[GUI]1-1[Board], [Board]-.-[Player],[Board]1-1[Graph],[Board]1->size[Node], [Graph]1->size[Node]

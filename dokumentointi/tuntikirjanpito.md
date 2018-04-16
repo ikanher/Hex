@@ -14,3 +14,6 @@
 | 15.4. | 6    | ensimmäinen version hex laudan graafisesta käyttöliittymästä |
 | 16.4. | 3    | graafinen käyttöliittymä |
 | 16.4. | 1    | checkstyle |
+| 16.4. | 1    | arkkitehtuurikuvauksen aloitus |
+
+Yhteensä: 46

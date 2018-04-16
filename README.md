@@ -6,6 +6,8 @@ Hex lautapeli projekti Helsingin Yliopiston _Ohjelmistotekniikan menetelmät_ ku
 
 [Vaatimusmäärittely](https://github.com/ikanher/otm-harjoitustyo/blob/master/dokumentointi/vaatimusmaarittely.md)
 
+[Arkkitehtuuri](https://github.com/ikanher/otm-harjoitustyo/blob/master/dokumentointi/arkkitehtuuri.md)
+
 [Tuntikirjanpito](https://github.com/ikanher/otm-harjoitustyo/blob/master/dokumentointi/tuntikirjanpito.md)
 
 ## Komentorivitoiminnot
