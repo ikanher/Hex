@@ -6,8 +6,8 @@
 package hex.ui;
 
 import hex.logic.Board;
-import hex.logic.HexColor;
-import hex.logic.Player;
+import hex.domain.HexColor;
+import hex.domain.Player;
 import java.util.Collection;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -57,8 +57,8 @@ public class GUI extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         board = new Board(SIZE);
-        red = new Player("Red", hex.logic.HexColor.RED);
-        blue = new Player("Blue", hex.logic.HexColor.BLUE);
+        red = new Player("Red", HexColor.RED);
+        blue = new Player("Blue", HexColor.BLUE);
         currentPlayer = red;
 
         Group root = new Group();

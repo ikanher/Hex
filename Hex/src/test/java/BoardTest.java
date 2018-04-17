@@ -5,9 +5,9 @@
  */
 
 import hex.logic.Board;
-import hex.logic.HexColor;
-import hex.logic.Node;
-import hex.logic.Player;
+import hex.domain.HexColor;
+import hex.domain.Node;
+import hex.domain.Player;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;

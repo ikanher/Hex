@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import hex.logic.Node;
+import hex.domain.Node;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

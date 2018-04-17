@@ -6,8 +6,8 @@
 package hex.ui;
 
 import hex.logic.Board;
-import hex.logic.HexColor;
-import hex.logic.Player;
+import hex.domain.HexColor;
+import hex.domain.Player;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 

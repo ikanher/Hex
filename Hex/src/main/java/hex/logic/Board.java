@@ -5,6 +5,10 @@
  */
 package hex.logic;
 
+import hex.domain.Graph;
+import hex.domain.HexColor;
+import hex.domain.Node;
+import hex.domain.Player;
 import java.util.stream.IntStream;
 
 /**
