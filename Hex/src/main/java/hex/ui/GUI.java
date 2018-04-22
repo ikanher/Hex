@@ -5,9 +5,8 @@
  */
 package hex.ui;
 
-import hex.logic.Board;
 import hex.domain.HexColor;
-import hex.domain.Player;
+import hex.logic.Game;
 import java.util.Collection;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -34,9 +33,7 @@ import rx.functions.Action1;
  * Implementation of the Hex board game graphical user interface using JavaFX
  * and the wonderful Hexameter library.
  *
- * (Hexameter: {
- *
- * @linktourl https://github.com/Hexworks/hexameter}).
+ * (Hexameter: {@linktourl https://github.com/Hexworks/hexameter}).
  *
  * @author akir
  */
@@ -49,17 +46,11 @@ public class GUI extends Application {
     private static final HexagonOrientation ORIENTATION = POINTY_TOP;
     private static final double RADIUS = 40;
 
-    private Board board;
-    private Player red;
-    private Player blue;
-    private Player currentPlayer;
+    private Game game;
 
     @Override
     public void start(Stage stage) throws Exception {
-        board = new Board(SIZE);
-        red = new Player("Red", HexColor.RED);
-        blue = new Player("Blue", HexColor.BLUE);
-        currentPlayer = red;
+        game = new Game(SIZE);
 
         Group root = new Group();
         Scene scene = new Scene(root);
@@ -76,6 +67,7 @@ public class GUI extends Application {
         Observable<Hexagon> hexagons = grid.getHexagons();
 
         hexagons.forEach(new Action1<Hexagon>() {
+
             @Override
             public void call(Hexagon hexagon) {
                 Polygon p = pointsToPolygon(hexagon.getPoints());
@@ -97,16 +89,11 @@ public class GUI extends Application {
     private void bindMouseClick(Polygon p, int x, int y) {
         // bind mouse clicks to act on the board
         p.setOnMouseClicked(event -> {
-            if (!board.isFree(x, y)) {
-                return;
-            }
-            board.playAt(currentPlayer, x, y);
-            if (currentPlayer.getColor() == HexColor.RED) {
+            game.playAt(x, y);
+            if (game.getCurrentPlayerColor() == HexColor.RED) {
                 p.setFill(Color.RED);
-                nextPlayer();
             } else {
                 p.setFill(Color.BLUE);
-                nextPlayer();
             }
         });
     }
@@ -121,14 +108,6 @@ public class GUI extends Application {
 
         HexagonalGrid grid = builder.build();
         return grid;
-    }
-
-    private void nextPlayer() {
-        if (currentPlayer.getColor() == HexColor.BLUE) {
-            currentPlayer = red;
-        } else {
-            currentPlayer = blue;
-        }
     }
 
     private Polygon pointsToPolygon(Collection<Point> points) {

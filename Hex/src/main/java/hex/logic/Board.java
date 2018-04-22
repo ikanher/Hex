@@ -7,9 +7,8 @@ package hex.logic;
 
 import hex.domain.Graph;
 import hex.domain.HexColor;
-import hex.domain.Node;
+import hex.domain.Cell;
 import hex.domain.Player;
-import java.util.stream.IntStream;
 
 /**
  * Class for representing a Hex board.
@@ -17,7 +16,7 @@ import java.util.stream.IntStream;
  * @author akir
  */
 public class Board {
-    private Node[][] board;
+    private Cell[][] board;
     private Graph graph;
 
     // size of our true playing board
@@ -42,8 +41,8 @@ public class Board {
         // size + 2 since we are using "ghost" borders to simplify things
         virtualSize = this.size + 2;
 
-        board = new Node[virtualSize][virtualSize];
-        graph = new Graph();
+        board = new Cell[virtualSize][virtualSize];
+        graph = new Graph(virtualSize * virtualSize);
         init();
     }
 
@@ -63,7 +62,7 @@ public class Board {
      * @param y - y coordinate
      * @return Node at x,y
      */
-    public Node getNodeAt(int x, int y) {
+    public Cell getNodeAt(int x, int y) {
         checkValidCoordinates(x, y);
         return board[x][y];
     }
@@ -98,9 +97,10 @@ public class Board {
 
     private void init() {
         // initialize board with nodes
+        int id = 0;
         for (int i = 0; i < virtualSize; i++) {
             for (int j = 0; j < virtualSize; j++) {
-                Node n = new Node(i, j);
+                Cell n = new Cell(i, j, id++);
                 board[i][j] = n;
             }
         }
@@ -108,19 +108,20 @@ public class Board {
         // initialize neighbors
         for (int i = 1; i <= size; i++) {
             for (int j = 1; j <= size; j++) {
-                Node from = board[i][j];
+
+                Cell from = board[i][j];
 
                 // nodes above
-                graph.addEdge(from, board[i][j - 1]);
-                graph.addEdge(from, board[i + 1][j - 1]);
+                graph.addEdge(from.getId(), board[i][j - 1].getId());
+                graph.addEdge(from.getId(), board[i + 1][j - 1].getId());
 
                 // node on the sides
-                graph.addEdge(from, board[i - 1][j]);
-                graph.addEdge(from, board[i + 1][j]);
+                graph.addEdge(from.getId(), board[i - 1][j].getId());
+                graph.addEdge(from.getId(), board[i + 1][j].getId());
 
                 // nodes below
-                graph.addEdge(from, board[i][j + 1]);
-                graph.addEdge(from, board[i - 1][j + 1]);
+                graph.addEdge(from.getId(), board[i][j + 1].getId());
+                graph.addEdge(from.getId(), board[i - 1][j + 1].getId());
             }
         }
     }
