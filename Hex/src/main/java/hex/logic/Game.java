@@ -5,6 +5,7 @@
  */
 package hex.logic;
 
+import hex.domain.Board;
 import hex.domain.HexColor;
 import hex.domain.Player;
 
@@ -18,12 +19,14 @@ import hex.domain.Player;
 public class Game {
 
     private Board board;
+    private GameLogic logic;
     private Player red;
     private Player blue;
     private Player currentPlayer;
 
     public Game(int size) {
         board = new Board(size);
+        logic = new GameLogic(board);
         red = new Player("Red", HexColor.RED);
         blue = new Player("Blue", HexColor.BLUE);
         currentPlayer = red;
@@ -34,10 +37,10 @@ public class Game {
     }
 
     public boolean playAt(int x, int y) {
-        if (!board.isFree(x, y)) {
+        if (!logic.isFree(x, y)) {
             return false;
         }
-        board.playAt(currentPlayer, x, y);
+        logic.playAt(currentPlayer, x, y);
         switchTurns();
         return true;
     }

@@ -89,7 +89,10 @@ public class GUI extends Application {
     private void bindMouseClick(Polygon p, int x, int y) {
         // bind mouse clicks to act on the board
         p.setOnMouseClicked(event -> {
-            game.playAt(x, y);
+            if (!game.playAt(x, y)) {
+                return;
+            }
+
             if (game.getCurrentPlayerColor() == HexColor.RED) {
                 p.setFill(Color.RED);
             } else {
