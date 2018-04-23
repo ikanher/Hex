@@ -7,6 +7,7 @@ package hex.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Class for representing a Hex board.
@@ -83,7 +84,7 @@ public class Board {
      * @param y - y coordinate
      * @return List of Cell objects
      */
-    public List<Cell> getNeighborCells(int x, int y) {
+    public List<Cell> getNeighborCells(Player p, int x, int y) {
         List<Cell> ret = new ArrayList<>();
         ret.add(getCellAt(x, y - 1));
         ret.add(getCellAt(x + 1, y - 1));
@@ -91,7 +92,9 @@ public class Board {
         ret.add(getCellAt(x + 1, y));
         ret.add(getCellAt(x, y + 1));
         ret.add(getCellAt(x - 1, y + 1));
-        return ret;
+        return ret.stream()
+                .filter(c -> c.getColor() == p.getColor())
+                .collect(Collectors.toList());
     }
 
     public List<Cell> topCells() {

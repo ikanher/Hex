@@ -18,14 +18,13 @@ import hex.domain.Player;
  */
 public class Game {
 
-    private Board board;
     private GameLogic logic;
     private Player red;
     private Player blue;
     private Player currentPlayer;
 
     public Game(int size) {
-        board = new Board(size);
+        Board board = new Board(size);
         logic = new GameLogic(board);
         red = new Player("Red", HexColor.RED);
         blue = new Player("Blue", HexColor.BLUE);
@@ -50,7 +49,7 @@ public class Game {
     }
 
     public Board getBoard() {
-        return board;
+        return logic.getBoard();
     }
 
     private void switchTurns() {

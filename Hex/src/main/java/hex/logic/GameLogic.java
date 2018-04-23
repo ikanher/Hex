@@ -25,6 +25,10 @@ public class GameLogic {
         graph = new Graph(board.getVirtualSize() * board.getVirtualSize());
     }
 
+    public Board getBoard() {
+        return board;
+    }
+
     /**
      * Checks if this board position is still playable
      *
@@ -54,10 +58,8 @@ public class GameLogic {
 
         int cellId = board.getCellAt(x, y).getId();
 
-        for (Cell c : board.getNeighborCells(x, y)) {
-            if (c.getColor() == p.getColor()) {
-                graph.addEdge(cellId, c.getId(), p.getColor());
-            }
+        for (Cell c : board.getNeighborCells(p, x, y)) {
+            graph.addEdge(cellId, c.getId(), p.getColor());
         }
     }
 
