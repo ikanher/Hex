@@ -11,6 +11,9 @@ import java.util.Collection;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
@@ -46,18 +49,29 @@ public class GUI extends Application {
     private static final HexagonOrientation ORIENTATION = POINTY_TOP;
     private static final double RADIUS = 40;
 
+    private boolean isRunning = true;
     private Game game;
+    private Label infoText;
 
     @Override
     public void start(Stage stage) throws Exception {
         game = new Game(SIZE);
 
-        Group root = new Group();
-        Scene scene = new Scene(root);
+        BorderPane pane = new BorderPane();
+
+        infoText = new Label("Blue starts the game..");
+        HBox gameInfo = new HBox();
+        gameInfo.getChildren().add(infoText);
+
+        pane.setTop(gameInfo);
+
+        Group gameWindow = new Group();
+        pane.setCenter(gameWindow);
 
         HexagonalGrid grid = initializeGrid();
-        addHexagons(root, grid);
+        addHexagons(gameWindow, grid);
 
+        Scene scene = new Scene(pane);
         stage.setScene(scene);
         stage.setTitle("Let's play Hex!");
         stage.show();
@@ -88,15 +102,28 @@ public class GUI extends Application {
 
     private void bindMouseClick(Polygon p, int x, int y) {
         // bind mouse clicks to act on the board
+
+        // plus one because of ghost edges
+        int realX = x + 1;
+        int realY = y + 1;
+
         p.setOnMouseClicked(event -> {
-            if (!game.playAt(x, y)) {
+            if (!isRunning) {
                 return;
             }
-
+            if (!game.playAt(realX, realY)) {
+                return;
+            }
             if (game.getCurrentPlayerColor() == HexColor.RED) {
                 p.setFill(Color.RED);
+                infoText.setText("Your turn, Blue!");
             } else {
                 p.setFill(Color.BLUE);
+                infoText.setText("Your turn, Red!");
+            }
+            if (game.isWin()) {
+                infoText.setText(game.getCurrentPlayerColor() + " WON!");
+                isRunning = false;
             }
         });
     }

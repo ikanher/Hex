@@ -5,7 +5,8 @@
  */
 package hex.domain;
 
-import hex.domain.Cell;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class for representing a Hex board.
@@ -31,19 +32,29 @@ public class Board {
     public Board(int size) {
         this.size = size;
 
-        // size + 2 since we are using "ghost" borders to simplify things
+        // + 2 since we are using "ghost" borders to simplify things
         virtualSize = this.size + 2;
 
-        board = new Cell[virtualSize][virtualSize];
+        // indexing starts from 1, so let's go to virtutalSize + 1
+        board = new Cell[virtualSize + 1][virtualSize + 1];
 
         // initialize board
-        int id = 0;
-        for (int i = 0; i < virtualSize; i++) {
-            for (int j = 0; j < virtualSize; j++) {
-                Cell n = new Cell(i, j, id++);
-                board[i][j] = n;
+        for (int i = 1; i <= virtualSize; i++) {
+            for (int j = 1; j <= virtualSize; j++) {
+                Cell c = new Cell(i, j, calculateCellId(i, j));
+                if (i == 1 || i == virtualSize) {
+                    c.setColor(HexColor.BLUE);
+                }
+                if (j == 1 || j == virtualSize) {
+                    c.setColor(HexColor.RED);
+                }
+                board[i][j] = c;
             }
-        }        
+        }
+    }
+
+    public int calculateCellId(int x, int y) {
+        return (y * virtualSize) + x - virtualSize;
     }
 
     public int getSize() {
@@ -52,7 +63,7 @@ public class Board {
 
     public int getVirtualSize() {
         return virtualSize;
-    }    
+    }
 
     /**
      * Returns Cell object at board position.
@@ -63,5 +74,55 @@ public class Board {
      */
     public Cell getCellAt(int x, int y) {
         return board[x][y];
+    }
+
+    /**
+     * Returns List of neighbor cells.
+     *
+     * @param x - x coordinate
+     * @param y - y coordinate
+     * @return List of Cell objects
+     */
+    public List<Cell> getNeighborCells(int x, int y) {
+        List<Cell> ret = new ArrayList<>();
+        ret.add(getCellAt(x, y - 1));
+        ret.add(getCellAt(x + 1, y - 1));
+        ret.add(getCellAt(x - 1, y));
+        ret.add(getCellAt(x + 1, y));
+        ret.add(getCellAt(x, y + 1));
+        ret.add(getCellAt(x - 1, y + 1));
+        return ret;
+    }
+
+    public List<Cell> topCells() {
+        List<Cell> ret = new ArrayList<>();
+        for (int i = 1; i <= virtualSize; i++) {
+            ret.add(getCellAt(i, 1));
+        }
+        return ret;
+    }
+
+    public List<Cell> bottomCells() {
+        List<Cell> ret = new ArrayList<>();
+        for (int i = 1; i <= virtualSize; i++) {
+            ret.add(getCellAt(i, virtualSize));
+        }
+        return ret;
+    }
+
+    public List<Cell> leftCells() {
+        List<Cell> ret = new ArrayList<>();
+        for (int i = 1; i <= virtualSize; i++) {
+            ret.add(getCellAt(1, i));
+        }
+        return ret;
+    }
+
+    public List<Cell> rightCells() {
+        List<Cell> ret = new ArrayList<>();
+        for (int i = 1; i <= virtualSize; i++) {
+            ret.add(getCellAt(virtualSize, i));
+        }
+        return ret;
     }
 }

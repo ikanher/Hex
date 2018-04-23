@@ -17,28 +17,6 @@ import java.util.List;
  */
 public class Graph {
 
-    /**
-     * Class representing an edge in graph.
-     *
-     */
-    private static class Edge {
-
-        private int from;
-        private int to;
-        private HexColor color;
-
-        public Edge(int from, int to, HexColor color) {
-            this.from = from;
-            this.to = to;
-            this.color = color;
-        }
-
-        @Override
-        public String toString() {
-            return "Edge(" + from + ", " + to + ", " + color + ")";
-        }
-    }
-
     private int N;
     private List<Edge>[] adjacencyList;
 
@@ -57,15 +35,41 @@ public class Graph {
     }
 
     /**
+     * Returns number of vertices
+     *
+     * @return number of vertices
+     */
+    public int V() {
+        return N;
+    }
+
+    /**
      * Adds a new edge from a vertex to another.
      *
      * @param from the source vertex id
      * @param to the destination vertex id
+     * @param c color of the edge, default: HexColor.WHITE
      */
-    public void addEdge(int from, int to) {
-        Edge e = new Edge(from, to, HexColor.WHITE);
-        adjacencyList[from].add(e);
-        adjacencyList[to].add(e);
+    public void addEdge(int from, int to, HexColor c) {
+        addDirectedEdge(from, to, c);
+        //addDirectedEdge(to, from, c);
+    }
+
+    public void addDirectedEdge(int from, int to, HexColor c) {
+        if (from == to) {
+            return;
+        }
+
+        Edge edge = new Edge(from, to, c);
+
+        boolean exists = adjacencyList[from]
+                .stream()
+                .anyMatch(e -> e.getFrom() == from && e.getTo() == to);
+
+        if (exists) {
+            return;
+        }
+        adjacencyList[from].add(edge);
     }
 
     /**

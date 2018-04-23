@@ -40,9 +40,17 @@ public class Game {
         if (!logic.isFree(x, y)) {
             return false;
         }
-        logic.playAt(currentPlayer, x, y);
         switchTurns();
+        logic.playAt(currentPlayer, x, y);
         return true;
+    }
+
+    public boolean isWin() {
+        return logic.checkWin(currentPlayer);
+    }
+
+    public Board getBoard() {
+        return board;
     }
 
     private void switchTurns() {

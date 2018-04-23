@@ -15,5 +15,8 @@
 | 16.4. | 3    | graafinen käyttöliittymä |
 | 16.4. | 1    | checkstyle |
 | 16.4. | 1    | arkkitehtuurikuvauksen aloitus |
+| 21.4. | 4    | refaktorointia |
+| 22.4. | 6    | refaktorointia + voiton tunnistus |
+| 23.4. | 4    | voiton tunnistus |
 
-Yhteensä: 46
+Yhteensä: 60

@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-import hex.logic.Board;
-import hex.domain.HexColor;
+import hex.domain.Board;
 import hex.domain.Cell;
+import hex.domain.HexColor;
 import hex.domain.Player;
 import java.util.List;
 import org.junit.After;
@@ -23,7 +23,7 @@ import static org.junit.Assert.*;
 public class BoardTest {
 
     private Board board;
-    private static final int SIZE = 5;
+    private static final int SIZE = 3;
 
     public BoardTest() {
     }
@@ -45,65 +45,70 @@ public class BoardTest {
     public void tearDown() {
     }
 
-//    @Test
-//    public void testCornerNeighbors() {
-//        Cell n = board.getNodeAt(1, 1);   
-//        List<Cell> neighbors = n.getNeighbors();
-//        assertEquals(6, neighbors.size());
-//
-//        // these are the real neighbors
-//        assertTrue(neighbors.contains(board.getNodeAt(2, 1)));
-//        assertTrue(neighbors.contains(board.getNodeAt(1, 2)));
-//    }
-
-//    @Test
-//    public void testMiddleNeighbors() {
-//        Cell n = board.getNodeAt(3, 3);
-//        List<Cell> neighbors = n.getNeighbors();
-//        assertEquals(6, neighbors.size());
-//
-//        // all surrounding neighbors should be returned
-//
-//        // above neighbors
-//        assertTrue(neighbors.contains(board.getNodeAt(3, 2)));
-//        assertTrue(neighbors.contains(board.getNodeAt(4, 2)));
-//
-//        // side neighbors
-//        assertTrue(neighbors.contains(board.getNodeAt(2, 3)));
-//        assertTrue(neighbors.contains(board.getNodeAt(4, 3)));
-//
-//        // bottom neighbors
-//        assertTrue(neighbors.contains(board.getNodeAt(2, 4)));
-//        assertTrue(neighbors.contains(board.getNodeAt(3, 4)));
-//    }
-
     @Test
-    public void testIsFreeWhenFree() {
-        assertTrue(board.isFree(1, 1));
+    public void testCalculateCellId1() {
+        assertEquals(7, board.calculateCellId(2, 2));
     }
 
     @Test
-    public void testIsFree() {
-        Player p = new Player("Foo", HexColor.RED);
-        board.playAt(p, 1, 1);
-        assertFalse(board.isFree(1, 1));
+    public void testCalculateCellId2() {
+        assertEquals(13, board.calculateCellId(3, 3));
     }
 
-    @Test(expected = IllegalStateException.class)
-    public void testIllegalMoveThrows1() {
-        Player p = new Player("Foo", HexColor.RED);
-        board.playAt(p, 0, 1);
+    @Test
+    public void testCalculateCellId3() {
+        assertEquals(19, board.calculateCellId(4, 4));
     }
 
-    @Test(expected = IllegalStateException.class)
-    public void testIllegalMoveThrows2() {
-        Player p = new Player("Foo", HexColor.RED);
-        board.playAt(p, 1, 0);
+    @Test
+    public void testCalculateCellId4() {
+        assertEquals(8, board.calculateCellId(3, 2));
     }
 
-    @Test(expected = IllegalStateException.class)
-    public void testIllegalMoveThrows3() {
-        Player p = new Player("Foo", HexColor.RED);
-        board.playAt(p, SIZE + 1, 1);
+    @Test
+    public void testTopCells() {
+        List<Cell> cells = board.topCells();
+        assertEquals(5, cells.size());
+        assertEquals(1, cells.stream().filter(c -> c.getX() == 1 && c.getY() == 1 && c.getColor() == HexColor.RED).count());
+        assertEquals(1, cells.stream().filter(c -> c.getX() == 2 && c.getY() == 1 && c.getColor() == HexColor.RED).count());
+        assertEquals(1, cells.stream().filter(c -> c.getX() == 3 && c.getY() == 1 && c.getColor() == HexColor.RED).count());
+        assertEquals(1, cells.stream().filter(c -> c.getX() == 4 && c.getY() == 1 && c.getColor() == HexColor.RED).count());
+        assertEquals(1, cells.stream().filter(c -> c.getX() == 5 && c.getY() == 1 && c.getColor() == HexColor.RED).count());
+    }
+
+    @Test
+    public void testBottomCells() {
+        List<Cell> cells = board.bottomCells();
+        assertEquals(5, cells.size());
+        assertEquals(1, cells.stream().filter(c -> c.getX() == 1 && c.getY() == board.getVirtualSize() && c.getColor() == HexColor.RED).count());
+        assertEquals(1, cells.stream().filter(c -> c.getX() == 2 && c.getY() == board.getVirtualSize() && c.getColor() == HexColor.RED).count());
+        assertEquals(1, cells.stream().filter(c -> c.getX() == 3 && c.getY() == board.getVirtualSize() && c.getColor() == HexColor.RED).count());
+        assertEquals(1, cells.stream().filter(c -> c.getX() == 4 && c.getY() == board.getVirtualSize() && c.getColor() == HexColor.RED).count());
+        assertEquals(1, cells.stream().filter(c -> c.getX() == 5 && c.getY() == board.getVirtualSize() && c.getColor() == HexColor.RED).count());
+    }
+
+    @Test
+    public void testLeftCells() {
+        List<Cell> cells = board.leftCells();
+        cells.stream().forEach(c -> System.out.println(c));
+        assertEquals(5, cells.size());
+        assertEquals(1, cells.stream().filter(c -> c.getX() == 1 && c.getY() == 1 && c.getColor() == HexColor.RED).count());
+        assertEquals(1, cells.stream().filter(c -> c.getX() == 1 && c.getY() == 2 && c.getColor() == HexColor.BLUE).count());
+        assertEquals(1, cells.stream().filter(c -> c.getX() == 1 && c.getY() == 3 && c.getColor() == HexColor.BLUE).count());
+        assertEquals(1, cells.stream().filter(c -> c.getX() == 1 && c.getY() == 4 && c.getColor() == HexColor.BLUE).count());
+        assertEquals(1, cells.stream().filter(c -> c.getX() == 1 && c.getY() == 5 && c.getColor() == HexColor.RED).count());
+    }
+
+
+    @Test
+    public void testRightCells() {
+        List<Cell> cells = board.rightCells();
+        cells.stream().forEach(c -> System.out.println(c));
+        assertEquals(5, cells.size());
+        assertEquals(1, cells.stream().filter(c -> c.getX() == board.getVirtualSize() && c.getY() == 1 && c.getColor() == HexColor.RED).count());
+        assertEquals(1, cells.stream().filter(c -> c.getX() == board.getVirtualSize() && c.getY() == 2 && c.getColor() == HexColor.BLUE).count());
+        assertEquals(1, cells.stream().filter(c -> c.getX() == board.getVirtualSize() && c.getY() == 3 && c.getColor() == HexColor.BLUE).count());
+        assertEquals(1, cells.stream().filter(c -> c.getX() == board.getVirtualSize() && c.getY() == 4 && c.getColor() == HexColor.BLUE).count());
+        assertEquals(1, cells.stream().filter(c -> c.getX() == board.getVirtualSize() && c.getY() == 5 && c.getColor() == HexColor.RED).count());
     }
 }
