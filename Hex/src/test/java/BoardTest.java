@@ -90,7 +90,6 @@ public class BoardTest {
     @Test
     public void testLeftCells() {
         List<Cell> cells = board.leftCells();
-        cells.stream().forEach(c -> System.out.println(c));
         assertEquals(5, cells.size());
         assertEquals(1, cells.stream().filter(c -> c.getX() == 1 && c.getY() == 1 && c.getColor() == HexColor.RED).count());
         assertEquals(1, cells.stream().filter(c -> c.getX() == 1 && c.getY() == 2 && c.getColor() == HexColor.BLUE).count());
@@ -103,7 +102,6 @@ public class BoardTest {
     @Test
     public void testRightCells() {
         List<Cell> cells = board.rightCells();
-        cells.stream().forEach(c -> System.out.println(c));
         assertEquals(5, cells.size());
         assertEquals(1, cells.stream().filter(c -> c.getX() == board.getVirtualSize() && c.getY() == 1 && c.getColor() == HexColor.RED).count());
         assertEquals(1, cells.stream().filter(c -> c.getX() == board.getVirtualSize() && c.getY() == 2 && c.getColor() == HexColor.BLUE).count());
