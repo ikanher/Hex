@@ -10,6 +10,10 @@ Hex lautapeli projekti Helsingin Yliopiston _Ohjelmistotekniikan menetelmät_ ku
 
 [Tuntikirjanpito](https://github.com/ikanher/otm-harjoitustyo/blob/master/dokumentointi/tuntikirjanpito.md)
 
+## Releaset
+
+[Viikko5](https://github.com/ikanher/otm-harjoitustyo/releases/tag/viikko5)
+
 ## Komentorivitoiminnot
 
 ## Ohjelman suoritus
@@ -20,7 +24,17 @@ Ohjelman voi suorittaa komennolla
 mvn compile exec:java -Dexec.mainClass=hex.ui.GUI
 ```
 
-## Testaus
+### Suoritettavan jarin generointi
+
+Komento
+
+```
+mvn package
+```
+
+generoi hakemistoon _target_ suoritettavan jar-tiedoston _Hex-0.1-SNAPSHOT-jar-with-dependencies.jar_
+
+### Testaus
 
 Testit suoritetaan komennolla
 
@@ -36,7 +50,7 @@ mvn jacoco:report
 
 Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto _target/site/jacoco/index.html_
 
-## Checkstyle
+### Checkstyle
 
 ```
 mvn jxr:jxr checkstyle:checkstyle
