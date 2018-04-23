@@ -16,7 +16,7 @@ Hex lautapeli projekti Helsingin Yliopiston _Ohjelmistotekniikan menetelmät_ ku
 
 ## Komentorivitoiminnot
 
-## Ohjelman suoritus
+### Ohjelman suoritus
 
 Ohjelman voi suorittaa komennolla
 
