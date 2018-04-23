@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
+ * Kruskal's algorithm doesn't seem to work here as the graph is disconnected.
  * 
  * @author akir
  */
@@ -70,7 +71,7 @@ public class KruskalGameEndChecker implements GameEndChecker {
     private Set<Edge> mst;
 
     public KruskalGameEndChecker(Graph g, HexColor c) {
-        uf = new UnionFind(g.V());
+        uf = new UnionFind(g.numVertices());
         mst = new HashSet<>();
 
         for (Edge e : g.edges()) {

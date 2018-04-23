@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class Graph {
 
-    private int N;
+    private int n;
     private List<Edge>[] adjacencyList;
 
     /**
@@ -26,10 +26,10 @@ public class Graph {
      * @param n size of the graph
      */
     public Graph(int n) {
-        N = n;
+        this.n = n;
 
-        adjacencyList = new ArrayList[N];
-        for (int i = 0; i < N; i++) {
+        adjacencyList = new ArrayList[n];
+        for (int i = 0; i < n; i++) {
             adjacencyList[i] = new ArrayList<>();
         }
     }
@@ -39,8 +39,8 @@ public class Graph {
      *
      * @return number of vertices
      */
-    public int V() {
-        return N;
+    public int numVertices() {
+        return n;
     }
 
     /**
@@ -79,7 +79,7 @@ public class Graph {
      */
     public List<Edge> edges() {
         List<Edge> ret = new ArrayList<>();
-        for (int i = 1; i < N; i++) {
+        for (int i = 1; i < n; i++) {
             ret.addAll(adjacencyList[i]);
         }
         return ret;

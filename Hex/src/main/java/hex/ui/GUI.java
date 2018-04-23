@@ -36,7 +36,9 @@ import rx.functions.Action1;
  * Implementation of the Hex board game graphical user interface using JavaFX
  * and the wonderful Hexameter library.
  *
- * (Hexameter: {@linktourl https://github.com/Hexworks/hexameter}).
+ * (Hexameter: {
+ *
+ * @linktourl https://github.com/Hexworks/hexameter}).
  *
  * @author akir
  */
@@ -101,31 +103,41 @@ public class GUI extends Application {
     }
 
     private void bindMouseClick(Polygon p, int x, int y) {
-        // bind mouse clicks to act on the board
 
         // plus one because of ghost edges
         int realX = x + 1;
         int realY = y + 1;
 
-        p.setOnMouseClicked(event -> {
-            if (!isRunning) {
-                return;
-            }
-            if (!game.playAt(realX, realY)) {
-                return;
-            }
-            if (game.getCurrentPlayerColor() == HexColor.RED) {
-                p.setFill(Color.RED);
-                infoText.setText("Your turn, Blue!");
-            } else {
-                p.setFill(Color.BLUE);
-                infoText.setText("Your turn, Red!");
-            }
-            if (game.isWin()) {
-                infoText.setText(game.getCurrentPlayerColor() + " WON!");
-                isRunning = false;
-            }
-        });
+        // bind mouse clicks to act on the board
+        p.setOnMouseClicked(event -> handleMouseClick(p, realX, realY));
+    }
+
+    private void handleMouseClick(Polygon p, int x, int y) {
+        if (!isRunning) {
+            return;
+        }
+        if (!game.playAt(x, y)) {
+            return;
+        }
+        updateUI(p);
+        checkForWin();
+    }
+
+    private void updateUI(Polygon p) {
+        if (game.getCurrentPlayerColor() == HexColor.RED) {
+            p.setFill(Color.RED);
+            infoText.setText("Your turn, Blue!");
+        } else {
+            p.setFill(Color.BLUE);
+            infoText.setText("Your turn, Red!");
+        }
+    }
+
+    private void checkForWin() {
+        if (game.isWin()) {
+            infoText.setText(game.getCurrentPlayerColor() + " WON!");
+            isRunning = false;
+        }
     }
 
     private HexagonalGrid initializeGrid() {
