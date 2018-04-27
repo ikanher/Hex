@@ -1,6 +1,4 @@
 [GUI]1-1[Game],
 [Game]1-1[GameLogic],[Game]1-2[Player],
-[GameLogic]1-1[Board],[GameLogic]1-1[Graph],[GameLogic]-.->[GameEndChecker],[GameLogic]-.->[Player]
-[GameEndChecker]<-[KruskalGameEndChecker],[GameEndChecker]-.->[Graph]
-[Graph]1-*[Edge],
-[Board]1-size[Cell]
+[GameLogic]1-1[Board],[GameLogic]-.->[GameEndChecker],[GameLogic]-.->[Player]
+[GameEndChecker]<-[UnionFindEndChecker],[Board]1-size[Cell]
