@@ -104,7 +104,7 @@ public class UnionFindEndGameChecker implements GameEndChecker {
         unionPlayerCells(uf, b, p);
 
         // if left end and right end belong to same union, then blue won
-        if (uf.find(cl.getId()) == uf.find(cr.getId())) {
+        if (uf.connected(cl.getId(), cr.getId())) {
             return true;
         }
 
@@ -124,7 +124,7 @@ public class UnionFindEndGameChecker implements GameEndChecker {
         unionPlayerCells(uf, b, p);
 
         // if top and bottom end belong to same union, then red won
-        if (uf.find(cb.getId()) == uf.find(ct.getId())) {
+        if (uf.connected(ct.getId(), cb.getId())) {
             return true;
         }
 
