@@ -18,5 +18,6 @@
 | 21.4. | 4    | refaktorointia |
 | 22.4. | 6    | refaktorointia + voiton tunnistus |
 | 23.4. | 4    | voiton tunnistus |
+| 27.4. | 7    | voiton tunnistus valmis + aloitus- ja lopetusruutu |
 
-Yhteensä: 60
+Yhteensä: 67

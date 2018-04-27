@@ -6,14 +6,22 @@
 package hex.ui;
 
 import hex.domain.HexColor;
+import hex.domain.Player;
 import hex.logic.Game;
 import java.util.Collection;
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
@@ -44,25 +52,109 @@ import rx.functions.Action1;
  */
 public class GUI extends Application {
 
-    private static final int SIZE = 7;
-    private static final int GRID_HEIGHT = SIZE;
-    private static final int GRID_WIDTH = SIZE;
+    // does not apply to game screen
+    private static final int WIDTH = 640;
+    private static final int HEIGHT = 480;
+
+    // board sizes
+    private static final int SIZE_TINY = 7;
+    private static final int SIZE_SMALL = 11;
+    private static final int SIZE_MEDIUM = 13;
+    private static final int SIZE_LARGE = 19;
+
+    // Hexameter setup
     private static final HexagonalGridLayout GRID_LAYOUT = TRAPEZOID;
     private static final HexagonOrientation ORIENTATION = POINTY_TOP;
-    private static final double RADIUS = 40;
+    private static final double RADIUS = 25;
 
+    // game status
     private boolean isRunning = true;
     private Game game;
+
+    // game screen
     private Label infoText;
+
+    // start screen
+    private TextField bluePlayerName;
+    private TextField redPlayerName;
+    private Button playButton;
+    private RadioButton tiny;
+    private RadioButton small;
+    private RadioButton medium;
+    private RadioButton large;
+
+    // global stage
+    private Stage mainStage;
 
     @Override
     public void start(Stage stage) throws Exception {
-        game = new Game(SIZE);
+        mainStage = stage;
+        startScreen(stage);
+    }
 
+    private void startScreen(Stage stage) {
         BorderPane pane = new BorderPane();
 
-        infoText = new Label("Blue starts the game..");
+        GridPane gameSetup = getGameSetupLayout(stage);
+        gameSetup.setAlignment(Pos.CENTER);
+
+        pane.setCenter(gameSetup);
+
+        Scene scene = new Scene(pane, WIDTH, HEIGHT);
+        stage.setScene(scene);
+        stage.setTitle("Let's play Hex!");
+
+        // focus to play button
+        playButton.requestFocus();
+
+        stage.show();
+    }
+
+    private void gameEndScreen(Stage stage) {
+        BorderPane pane = new BorderPane();
+
+        GridPane innerPane = new GridPane();
+        innerPane.setAlignment(Pos.CENTER);
+
+        String winnerName = game.getCurrentPlayer().getName();
+        Label winner = new Label(winnerName + " WON!");
+        winner.setAlignment(Pos.CENTER);
+        innerPane.add(winner, 0, 0);
+
+        playButton = new Button("Play again!");
+        playButton.setOnAction(event -> gameScreen(stage));
+
+        Button gameSetupButton = new Button("Game setup");
+        gameSetupButton.setOnAction(event -> startScreen(stage));
+
+        Button quitButton = new Button("Quit..");
+        quitButton.setOnAction(event -> stage.close());
+
+        HBox buttonBox = new HBox();
+        buttonBox.setAlignment(Pos.CENTER);
+        buttonBox.getChildren().addAll(playButton, gameSetupButton, quitButton);
+
+        innerPane.add(buttonBox, 0, 1);
+        pane.setCenter(innerPane);
+
+        Scene scene = new Scene(pane, WIDTH, HEIGHT);
+        stage.setScene(scene);
+        stage.setTitle("More Hex?");
+        stage.show();
+    }
+
+    private void gameScreen(Stage stage) {
+        setDefaults();
+        int size = getBoardSize();
+        boolean blueStarts = true;
+        game = new Game(size, bluePlayerName.getText(), redPlayerName.getText());
+
+        BorderPane pane = new BorderPane();
+        infoText = new Label(game.getCurrentPlayer().getName() + " starts the game..");
+        infoText.setAlignment(Pos.CENTER);
+
         HBox gameInfo = new HBox();
+        gameInfo.setAlignment(Pos.CENTER);
         gameInfo.getChildren().add(infoText);
 
         pane.setTop(gameInfo);
@@ -70,13 +162,88 @@ public class GUI extends Application {
         Group gameWindow = new Group();
         pane.setCenter(gameWindow);
 
-        HexagonalGrid grid = initializeGrid();
+        HexagonalGrid grid = initializeGrid(size);
         addHexagons(gameWindow, grid);
 
         Scene scene = new Scene(pane);
         stage.setScene(scene);
         stage.setTitle("Let's play Hex!");
         stage.show();
+
+        isRunning = true;
+    }
+
+    private GridPane getGameSetupLayout(Stage stage) {
+        GridPane gameSetup = new GridPane();
+        gameSetup.setHgap(20);
+        gameSetup.setVgap(10);
+
+        gameSetup.add(new Label("Who's playing Blue?"), 0, 0);
+        gameSetup.add(new Label("Red, please enter your name!"), 2, 0);
+
+        bluePlayerName = new TextField();
+        bluePlayerName.setPromptText("Blue");
+        redPlayerName = new TextField();
+        redPlayerName.setPromptText("Red");
+
+        gameSetup.add(bluePlayerName, 0, 1);
+        gameSetup.add(redPlayerName, 2, 1);
+
+        gameSetup.add(getBoardSizeSelect(), 1, 4);
+
+        playButton = new Button("Play!");
+        playButton.setOnAction(event -> gameScreen(stage));
+
+        gameSetup.add(playButton, 1, 3);
+
+        return gameSetup;
+    }
+
+    private VBox getBoardSizeSelect() {
+        VBox box = new VBox();
+        box.setAlignment(Pos.CENTER);
+
+        Label label = new Label("Select board size: ");
+        ToggleGroup group = new ToggleGroup();
+
+        tiny = new RadioButton("7x7");
+        tiny.setToggleGroup(group);
+
+        small = new RadioButton("11x11");
+        small.setToggleGroup(group);
+
+        medium = new RadioButton("13x13");
+        medium.setToggleGroup(group);
+        medium.setSelected(true);
+
+        large = new RadioButton("19x19");
+        large.setToggleGroup(group);
+
+        box.getChildren().addAll(label, tiny, small, medium, large);
+        return box;
+    }
+
+    private void setDefaults() {
+        if (bluePlayerName.getText().equals("")) {
+            bluePlayerName.setText("Blue");
+        }
+        if (redPlayerName.getText().equals("")) {
+            redPlayerName.setText("Red");
+        }
+    }
+
+    private int getBoardSize() {
+        if (small.isSelected()) {
+            return SIZE_SMALL;
+        }
+        if (large.isSelected()) {
+            return SIZE_LARGE;
+        }
+        if (tiny.isSelected()) {
+            return SIZE_TINY;
+        }
+
+        return SIZE_MEDIUM;
     }
 
     private void addHexagons(Group root, HexagonalGrid grid) {
@@ -103,12 +270,10 @@ public class GUI extends Application {
     }
 
     private void bindMouseClick(Polygon p, int x, int y) {
-
         // plus one because of ghost edges
         int realX = x + 1;
         int realY = y + 1;
 
-        p.setOnMouseEntered(event -> System.out.println("x: " + realX + ", y: " + realY));
         // bind mouse clicks to act on the board
         p.setOnMouseClicked(event -> handleMouseClick(p, realX, realY));
     }
@@ -120,32 +285,31 @@ public class GUI extends Application {
         if (!game.playAt(x, y)) {
             return;
         }
-        updateUI(p);
+        updateCell(p);
         checkForWin();
         game.switchTurns();
+        infoText.setText("Your turn, " + game.getCurrentPlayer().getName() + "!");
     }
 
-    private void updateUI(Polygon p) {
-        if (game.getCurrentPlayerColor() == HexColor.RED) {
+    private void updateCell(Polygon p) {
+        if (game.getCurrentPlayer().getColor() == HexColor.RED) {
             p.setFill(Color.RED);
-            infoText.setText("Your turn, Blue!");
         } else {
             p.setFill(Color.BLUE);
-            infoText.setText("Your turn, Red!");
         }
     }
 
     private void checkForWin() {
         if (game.isWin()) {
-            infoText.setText(game.getCurrentPlayerColor() + " WON!");
             isRunning = false;
+            gameEndScreen(mainStage);
         }
     }
 
-    private HexagonalGrid initializeGrid() {
+    private HexagonalGrid initializeGrid(int size) {
         HexagonalGridBuilder builder = new HexagonalGridBuilder()
-                .setGridHeight(GRID_HEIGHT)
-                .setGridWidth(GRID_WIDTH)
+                .setGridHeight(size)
+                .setGridWidth(size)
                 .setGridLayout(GRID_LAYOUT)
                 .setOrientation(ORIENTATION)
                 .setRadius(RADIUS);

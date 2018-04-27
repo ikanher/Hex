@@ -45,14 +45,14 @@ public class GameTest {
     @Test
     public void testSwitchTurns1() {
         game.switchTurns();
-        assertEquals(HexColor.RED, game.getCurrentPlayerColor());
+        assertEquals(HexColor.RED, game.getCurrentPlayer().getColor());
     }
 
     @Test
     public void testSwitchTurns2() {
         game.switchTurns();
         game.switchTurns();
-        assertEquals(HexColor.BLUE, game.getCurrentPlayerColor());
+        assertEquals(HexColor.BLUE, game.getCurrentPlayer().getColor());
     }
 
     @Test

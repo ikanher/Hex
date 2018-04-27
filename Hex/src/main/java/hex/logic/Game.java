@@ -26,13 +26,21 @@ public class Game {
     public Game(int size) {
         Board board = new Board(size);
         logic = new GameLogic(board);
-        red = new Player("Red", HexColor.RED);
         blue = new Player("Blue", HexColor.BLUE);
+        red = new Player("Red", HexColor.RED);
         currentPlayer = blue;
     }
 
-    public HexColor getCurrentPlayerColor() {
-        return currentPlayer.getColor();
+    public Game(int size, String bluePlayerName, String redPlayerName) {
+        Board board = new Board(size);
+        logic = new GameLogic(board);
+        blue = new Player(bluePlayerName, HexColor.BLUE);
+        red = new Player(redPlayerName, HexColor.RED);
+        currentPlayer = blue;
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
     }
 
     public boolean playAt(int x, int y) {
