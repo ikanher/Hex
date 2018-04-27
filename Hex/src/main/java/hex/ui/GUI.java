@@ -18,6 +18,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -51,6 +59,8 @@ import rx.functions.Action1;
  * @author akir
  */
 public class GUI extends Application {
+    // background image location
+    private static final String BACKGROUND_IMAGE = "/background.png";
 
     // does not apply to game screen
     private static final int WIDTH = 640;
@@ -150,6 +160,7 @@ public class GUI extends Application {
         game = new Game(size, bluePlayerName.getText(), redPlayerName.getText());
 
         BorderPane pane = new BorderPane();
+        VBox top = new VBox();
         infoText = new Label(game.getCurrentPlayer().getName() + " starts the game..");
         infoText.setAlignment(Pos.CENTER);
 
@@ -158,6 +169,7 @@ public class GUI extends Application {
         gameInfo.getChildren().add(infoText);
 
         pane.setTop(gameInfo);
+        setBackground(pane);
 
         Group gameWindow = new Group();
         pane.setCenter(gameWindow);
@@ -171,6 +183,24 @@ public class GUI extends Application {
         stage.show();
 
         isRunning = true;
+    }
+
+    private void setBackground(BorderPane pane) {
+        Image image = new Image(BACKGROUND_IMAGE);
+        BackgroundSize backgroundSize = new BackgroundSize(
+                BackgroundSize.AUTO,
+                BackgroundSize.AUTO,
+                false, false, false, true);
+
+        BackgroundImage backgroundImage = new BackgroundImage(
+                image,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                backgroundSize);
+
+        Background background = new Background(backgroundImage);
+        pane.setBackground(background);
     }
 
     private GridPane getGameSetupLayout(Stage stage) {
@@ -330,6 +360,7 @@ public class GUI extends Application {
 
         Polygon polygon = new Polygon();
         polygon.getPoints().addAll(arr);
+        polygon.setStroke(Color.SILVER);
         return polygon;
     }
 
