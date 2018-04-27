@@ -6,8 +6,6 @@
 package hex.logic;
 
 import hex.domain.Board;
-import hex.domain.Cell;
-import hex.domain.Graph;
 import hex.domain.HexColor;
 import hex.domain.Player;
 
@@ -18,11 +16,9 @@ import hex.domain.Player;
 public class GameLogic {
 
     private Board board;
-    private Graph graph;
 
     public GameLogic(Board board) {
         this.board = board;
-        graph = new Graph(board.getVirtualSize() * board.getVirtualSize());
     }
 
     public Board getBoard() {
@@ -48,19 +44,13 @@ public class GameLogic {
      *
      * Board position will be assigned to the Player's color.
      *
-     * @param player the player whois playing this move
+     * @param p the player who is playing this move
      * @param x x coordinate
      * @param y y coordinate
      */
     public void playAt(Player p, int x, int y) {
 
         board.getCellAt(x, y).setColor(p.getColor());
-
-        int cellId = board.getCellAt(x, y).getId();
-
-        for (Cell c : board.getNeighborCells(p, x, y)) {
-            graph.addEdge(cellId, c.getId(), p.getColor());
-        }
     }
 
     /**
@@ -70,7 +60,7 @@ public class GameLogic {
      * @return boolean
      */
     public boolean checkWin(Player p) {
-        GameEndChecker gec = new KruskalGameEndChecker(graph, p.getColor());
+        GameEndChecker gec = new UnionFindEndGameChecker();
         boolean isWin = gec.isWin(board, p);
         return isWin;
     }

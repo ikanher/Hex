@@ -7,7 +7,6 @@
 import hex.domain.Board;
 import hex.domain.Cell;
 import hex.domain.HexColor;
-import hex.domain.Player;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -66,8 +65,8 @@ public class BoardTest {
     }
 
     @Test
-    public void testTopCells() {
-        List<Cell> cells = board.topCells();
+    public void testTopGhostCells() {
+        List<Cell> cells = board.getTopGhostCells();
         assertEquals(5, cells.size());
         assertEquals(1, cells.stream().filter(c -> c.getX() == 1 && c.getY() == 1 && c.getColor() == HexColor.RED).count());
         assertEquals(1, cells.stream().filter(c -> c.getX() == 2 && c.getY() == 1 && c.getColor() == HexColor.RED).count());
@@ -77,8 +76,8 @@ public class BoardTest {
     }
 
     @Test
-    public void testBottomCells() {
-        List<Cell> cells = board.bottomCells();
+    public void testBottomGhostCells() {
+        List<Cell> cells = board.getBottomGhostCells();
         assertEquals(5, cells.size());
         assertEquals(1, cells.stream().filter(c -> c.getX() == 1 && c.getY() == board.getVirtualSize() && c.getColor() == HexColor.RED).count());
         assertEquals(1, cells.stream().filter(c -> c.getX() == 2 && c.getY() == board.getVirtualSize() && c.getColor() == HexColor.RED).count());
@@ -88,8 +87,8 @@ public class BoardTest {
     }
 
     @Test
-    public void testLeftCells() {
-        List<Cell> cells = board.leftCells();
+    public void testLeftGhostCells() {
+        List<Cell> cells = board.getLeftGhostCells();
         assertEquals(5, cells.size());
         assertEquals(1, cells.stream().filter(c -> c.getX() == 1 && c.getY() == 1 && c.getColor() == HexColor.RED).count());
         assertEquals(1, cells.stream().filter(c -> c.getX() == 1 && c.getY() == 2 && c.getColor() == HexColor.BLUE).count());
@@ -98,10 +97,9 @@ public class BoardTest {
         assertEquals(1, cells.stream().filter(c -> c.getX() == 1 && c.getY() == 5 && c.getColor() == HexColor.RED).count());
     }
 
-
     @Test
-    public void testRightCells() {
-        List<Cell> cells = board.rightCells();
+    public void testRightGhostCells() {
+        List<Cell> cells = board.getRightGhostCells();
         assertEquals(5, cells.size());
         assertEquals(1, cells.stream().filter(c -> c.getX() == board.getVirtualSize() && c.getY() == 1 && c.getColor() == HexColor.RED).count());
         assertEquals(1, cells.stream().filter(c -> c.getX() == board.getVirtualSize() && c.getY() == 2 && c.getColor() == HexColor.BLUE).count());

@@ -2,6 +2,10 @@
 
 Hex lautapeli projekti Helsingin Yliopiston _Ohjelmistotekniikan menetelmät_ kurssia varten.
 
+Pelin tarkoituksena on molempien pelaajien pyrkiä yhdistämään omat päätynsä yhtenäisellä ketjulla. Se pelaaja, kumpi ensin yhdistää päätynsä voittaa pelin. Punainen pelaa alapäädystä yläpäätyyn ja sininen vasemmalta oikealle.
+
+[Hex peli Wikipediassa](https://en.wikipedia.org/wiki/Hex_(board_game))
+
 ## Dokumentaatio
 
 [Vaatimusmäärittely](https://github.com/ikanher/otm-harjoitustyo/blob/master/dokumentointi/vaatimusmaarittely.md)

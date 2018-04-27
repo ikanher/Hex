@@ -44,7 +44,7 @@ import rx.functions.Action1;
  */
 public class GUI extends Application {
 
-    private static final int SIZE = 5;
+    private static final int SIZE = 7;
     private static final int GRID_HEIGHT = SIZE;
     private static final int GRID_WIDTH = SIZE;
     private static final HexagonalGridLayout GRID_LAYOUT = TRAPEZOID;

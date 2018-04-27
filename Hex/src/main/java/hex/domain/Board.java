@@ -97,7 +97,7 @@ public class Board {
                 .collect(Collectors.toList());
     }
 
-    public List<Cell> topCells() {
+    public List<Cell> getTopGhostCells() {
         List<Cell> ret = new ArrayList<>();
         for (int i = 1; i <= virtualSize; i++) {
             ret.add(getCellAt(i, 1));
@@ -105,7 +105,7 @@ public class Board {
         return ret;
     }
 
-    public List<Cell> bottomCells() {
+    public List<Cell> getBottomGhostCells() {
         List<Cell> ret = new ArrayList<>();
         for (int i = 1; i <= virtualSize; i++) {
             ret.add(getCellAt(i, virtualSize));
@@ -113,7 +113,7 @@ public class Board {
         return ret;
     }
 
-    public List<Cell> leftCells() {
+    public List<Cell> getLeftGhostCells() {
         List<Cell> ret = new ArrayList<>();
         for (int i = 1; i <= virtualSize; i++) {
             ret.add(getCellAt(1, i));
@@ -121,10 +121,23 @@ public class Board {
         return ret;
     }
 
-    public List<Cell> rightCells() {
+    public List<Cell> getRightGhostCells() {
         List<Cell> ret = new ArrayList<>();
         for (int i = 1; i <= virtualSize; i++) {
             ret.add(getCellAt(virtualSize, i));
+        }
+        return ret;
+    }
+
+    public List<Cell> getPlayerCells(Player p) {
+        List<Cell> ret = new ArrayList<>();
+        for (int i = 2; i < virtualSize; i++) {
+            for (int j = 2; j < virtualSize; j++) {
+                Cell c = board[i][j];
+                if (c.getColor() == p.getColor()) {
+                    ret.add(c);
+                }
+            }
         }
         return ret;
     }

@@ -93,7 +93,9 @@ public class GameLogicTest {
     public void testBlueWon1() {
         Player p = new Player("Blue", HexColor.BLUE);
         logic.playAt(p, 2, 2);
+        logic.playAt(p, 3, 2);
         logic.playAt(p, 3, 3);
+        logic.playAt(p, 3, 4);
         logic.playAt(p, 4, 4);
         assertTrue(logic.checkWin(p));
     }
@@ -111,8 +113,8 @@ public class GameLogicTest {
     public void testRedWon1() {
         Player p = new Player("Red", HexColor.RED);
         logic.playAt(p, 2, 2);
-        logic.playAt(p, 3, 3);
-        logic.playAt(p, 4, 4);
+        logic.playAt(p, 2, 3);
+        logic.playAt(p, 2, 4);
         assertTrue(logic.checkWin(p));
     }
 
@@ -122,6 +124,17 @@ public class GameLogicTest {
         logic.playAt(p, 3, 2);
         logic.playAt(p, 3, 3);
         logic.playAt(p, 3, 4);
+        assertTrue(logic.checkWin(p));
+    }
+
+    @Test
+    public void testRedWon3() {
+        Player p = new Player("Red", HexColor.RED);
+        logic.playAt(p, 2, 2);
+        logic.playAt(p, 2, 3);
+        logic.playAt(p, 3, 3);
+        logic.playAt(p, 4, 3);
+        logic.playAt(p, 4, 4);
         assertTrue(logic.checkWin(p));
     }
 
