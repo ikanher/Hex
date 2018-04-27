@@ -108,6 +108,7 @@ public class GUI extends Application {
         int realX = x + 1;
         int realY = y + 1;
 
+        p.setOnMouseEntered(event -> System.out.println("x: " + realX + ", y: " + realY));
         // bind mouse clicks to act on the board
         p.setOnMouseClicked(event -> handleMouseClick(p, realX, realY));
     }
@@ -121,6 +122,7 @@ public class GUI extends Application {
         }
         updateUI(p);
         checkForWin();
+        game.switchTurns();
     }
 
     private void updateUI(Polygon p) {

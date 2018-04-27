@@ -28,7 +28,7 @@ public class Game {
         logic = new GameLogic(board);
         red = new Player("Red", HexColor.RED);
         blue = new Player("Blue", HexColor.BLUE);
-        currentPlayer = red;
+        currentPlayer = blue;
     }
 
     public HexColor getCurrentPlayerColor() {
@@ -39,7 +39,6 @@ public class Game {
         if (!logic.isFree(x, y)) {
             return false;
         }
-        switchTurns();
         logic.playAt(currentPlayer, x, y);
         return true;
     }
@@ -52,7 +51,7 @@ public class Game {
         return logic.getBoard();
     }
 
-    private void switchTurns() {
+    public void switchTurns() {
         if (currentPlayer.getColor() == HexColor.BLUE) {
             currentPlayer = red;
         } else {
