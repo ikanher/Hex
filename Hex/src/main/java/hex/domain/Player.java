@@ -6,6 +6,7 @@
 package hex.domain;
 
 /**
+ * Simple domain class for representing a player in Hex game.
  *
  * @author akir
  */

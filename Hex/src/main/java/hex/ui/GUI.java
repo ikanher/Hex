@@ -52,9 +52,7 @@ import rx.functions.Action1;
  * Implementation of the Hex board game graphical user interface using JavaFX
  * and the wonderful Hexameter library.
  *
- * (Hexameter: {
- *
- * @linktourl https://github.com/Hexworks/hexameter}).
+ * @see <a href="https://github.com/Hexworks/hexameter">Hexameter</a>
  *
  * @author akir
  */

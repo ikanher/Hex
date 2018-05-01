@@ -10,6 +10,11 @@ import hex.domain.HexColor;
 import hex.domain.Player;
 
 /**
+ * Contains most of the playing logic.
+ *
+ * Playing at a board position.
+ * Checking if position is free.
+ * Winning position detection.
  *
  * @author akir
  */
@@ -17,6 +22,11 @@ public class GameLogic {
 
     private Board board;
 
+    /**
+     * Sets up a new GameLogic object.
+     *
+     * @param board 
+     */
     public GameLogic(Board board) {
         this.board = board;
     }

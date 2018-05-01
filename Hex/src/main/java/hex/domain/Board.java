@@ -54,6 +54,13 @@ public class Board {
         }
     }
 
+    /**
+     * Calculates an id for this cell based on x and y coordinate.
+     *
+     * @param x x coordinate
+     * @param y y coordinate
+     * @return generated cell id
+     */
     public int calculateCellId(int x, int y) {
         return (y * virtualSize) + x - virtualSize;
     }
@@ -69,9 +76,9 @@ public class Board {
     /**
      * Returns Cell object at board position.
      *
-     * @param x - x coordinate
-     * @param y - y coordinate
-     * @return Node at x,y
+     * @param x x coordinate
+     * @param y y coordinate
+     * @return Cell
      */
     public Cell getCellAt(int x, int y) {
         return board[x][y];
@@ -80,9 +87,9 @@ public class Board {
     /**
      * Returns List of neighbor cells.
      *
-     * @param x - x coordinate
-     * @param y - y coordinate
-     * @return List of Cell objects
+     * @param x x coordinate
+     * @param y y coordinate
+     * @return List<Cell>
      */
     public List<Cell> getNeighborCells(Player p, int x, int y) {
         List<Cell> ret = new ArrayList<>();
@@ -97,6 +104,11 @@ public class Board {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Returns the top row ghost cells (red).
+     *
+     * @return List<Cell> cells
+     */
     public List<Cell> getTopGhostCells() {
         List<Cell> ret = new ArrayList<>();
         for (int i = 1; i <= virtualSize; i++) {
@@ -105,6 +117,11 @@ public class Board {
         return ret;
     }
 
+    /**
+     * Returns the bottom row ghost cells (red).
+     *
+     * @return List<Cell> cells
+     */
     public List<Cell> getBottomGhostCells() {
         List<Cell> ret = new ArrayList<>();
         for (int i = 1; i <= virtualSize; i++) {
@@ -113,6 +130,11 @@ public class Board {
         return ret;
     }
 
+    /**
+     * Returns the left column ghost cells (blue).
+     *
+     * @return List<Cell> cells
+     */
     public List<Cell> getLeftGhostCells() {
         List<Cell> ret = new ArrayList<>();
         for (int i = 1; i <= virtualSize; i++) {
@@ -121,6 +143,11 @@ public class Board {
         return ret;
     }
 
+    /**
+     * Returns the right column ghost cells (blue).
+     *
+     * @return List<Cell> cells
+     */
     public List<Cell> getRightGhostCells() {
         List<Cell> ret = new ArrayList<>();
         for (int i = 1; i <= virtualSize; i++) {
@@ -129,6 +156,12 @@ public class Board {
         return ret;
     }
 
+    /**
+     * Returns Player p's cells.
+     *
+     * @param p Player
+     * @return List<Cell> cells
+     */
     public List<Cell> getPlayerCells(Player p) {
         List<Cell> ret = new ArrayList<>();
         for (int i = 2; i < virtualSize; i++) {

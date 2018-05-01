@@ -23,6 +23,11 @@ public class Game {
     private Player blue;
     private Player currentPlayer;
 
+    /**
+     * Create a new game for players "Red" and "Blue"
+     *
+     * @param size the board size
+     */
     public Game(int size) {
         Board board = new Board(size);
         logic = new GameLogic(board);
@@ -31,6 +36,13 @@ public class Game {
         currentPlayer = blue;
     }
 
+    /**
+     * Create a new game for players bluePlayerName, redPlayerName.
+     *
+     * @param size the board size
+     * @param bluePlayerName Blue player's name
+     * @param redPlayerName Red player's name
+     */
     public Game(int size, String bluePlayerName, String redPlayerName) {
         Board board = new Board(size);
         logic = new GameLogic(board);
@@ -43,6 +55,13 @@ public class Game {
         return currentPlayer;
     }
 
+    /**
+     * For current player plays at board position x, y.
+     *
+     * @param x x coordinate
+     * @param y y coordinate
+     * @return true if play was success (board position was free)
+     */
     public boolean playAt(int x, int y) {
         if (!logic.isFree(x, y)) {
             return false;
@@ -51,6 +70,11 @@ public class Game {
         return true;
     }
 
+    /**
+     * Checks if game has been won.
+     *
+     * @return true if current player won the game
+     */
     public boolean isWin() {
         return logic.checkWin(currentPlayer);
     }
@@ -59,6 +83,10 @@ public class Game {
         return logic.getBoard();
     }
 
+    /**
+     * Switches playing turns.
+     *
+     */
     public void switchTurns() {
         if (currentPlayer.getColor() == HexColor.BLUE) {
             currentPlayer = red;

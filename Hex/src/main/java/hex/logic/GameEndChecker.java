@@ -9,6 +9,7 @@ import hex.domain.Board;
 import hex.domain.Player;
 
 /**
+ * Interface for GameEndCheckers, to decide if the game was won.
  *
  * @author akir
  */
