@@ -19,5 +19,8 @@
 | 22.4. | 6    | refaktorointia + voiton tunnistus |
 | 23.4. | 4    | voiton tunnistus |
 | 27.4. | 7    | voiton tunnistus valmis + aloitus- ja lopetusruutu |
+| 27.4. | 7    | voiton tunnistus valmis + aloitus- ja lopetusruutu |
+| 28.4. | 5    | AI? |
+| 1.5.  | 2    | dokumentaatio, javadocit, uusi release |
 
-Yhteensä: 67
+Yhteensä: 74

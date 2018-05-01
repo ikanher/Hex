@@ -8,6 +8,8 @@ Pelin tarkoituksena on molempien pelaajien pyrkiä yhdistämään omat päätyns
 
 ## Dokumentaatio
 
+[Käyttöohje](https://github.com/ikanher/otm-harjoitustyo/blob/master/dokumentointi/kayttoohje.md)
+
 [Vaatimusmäärittely](https://github.com/ikanher/otm-harjoitustyo/blob/master/dokumentointi/vaatimusmaarittely.md)
 
 [Arkkitehtuuri](https://github.com/ikanher/otm-harjoitustyo/blob/master/dokumentointi/arkkitehtuuri.md)
@@ -15,6 +17,8 @@ Pelin tarkoituksena on molempien pelaajien pyrkiä yhdistämään omat päätyns
 [Tuntikirjanpito](https://github.com/ikanher/otm-harjoitustyo/blob/master/dokumentointi/tuntikirjanpito.md)
 
 ## Releaset
+
+[Viikko6](https://github.com/ikanher/otm-harjoitustyo/releases/tag/viikko6)
 
 [Viikko5](https://github.com/ikanher/otm-harjoitustyo/releases/tag/viikko5)
 
@@ -53,6 +57,14 @@ mvn jacoco:report
 ```
 
 Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto _target/site/jacoco/index.html_
+
+### JavaDoc
+
+JavaDoc generoidaan komennolla
+
+```
+mvn javadoc:javadoc
+```
 
 ### Checkstyle
 
