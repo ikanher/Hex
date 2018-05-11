@@ -6,7 +6,7 @@ Pelin tarkoituksena on molempien pelaajien pyrkiä yhdistämään omat päätyns
 
 [Hex peli Wikipediassa](https://en.wikipedia.org/wiki/Hex_(board_game))
 
-<img src="https://github.com/ikanher/otm-harjoitustyo/blob/master/dokumentointi/images/gameplay.gif" width="640" height="480" />
+<img src="https://github.com/ikanher/otm-harjoitustyo/blob/master/dokumentointi/images/gameplay.gif" />
 
 ## Dokumentaatio
 
