@@ -67,7 +67,7 @@ public class GUI extends Application {
     private static final int HEIGHT = 480;
 
     // board sizes
-    private static final int SIZE_TINY = 3;
+    private static final int SIZE_TINY = 7;
     private static final int SIZE_SMALL = 11;
     private static final int SIZE_MEDIUM = 13;
     private static final int SIZE_LARGE = 19;
