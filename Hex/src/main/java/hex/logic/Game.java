@@ -5,7 +5,7 @@
  */
 package hex.logic;
 
-import database.ResultDatabase;
+import hex.database.ResultDatabase;
 import hex.domain.Board;
 import hex.domain.GameResult;
 import hex.domain.HexColor;

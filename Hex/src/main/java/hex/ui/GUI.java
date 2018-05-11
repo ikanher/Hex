@@ -165,7 +165,7 @@ public class GUI extends Application {
         pane.setVgap(5);
         pane.setAlignment(Pos.CENTER);
 
-        Label nameHeader = new Label("Who lost against you?");
+        Label nameHeader = new Label("Who's lost against you?");
         nameHeader.setFont(Font.font("Monospaced", 10));
         Label countHeader = new Label("How many times?");
         countHeader.setFont(Font.font("Monospaced", 10));

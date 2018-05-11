@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import database.ResultDatabase;
+import hex.database.ResultDatabase;
 import hex.domain.GameResult;
 import hex.domain.Player;
 import hex.domain.PlayerStatistics;
@@ -98,7 +98,6 @@ public class ResultDatabaseTest {
         db.saveResult(result);
 
         PlayerStatistics stats = db.getPlayerStatistics(winner);
-        stats.print();
         assertEquals(2, stats.winCount(loser));
     }
 }

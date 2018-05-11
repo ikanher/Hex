@@ -35,11 +35,4 @@ public class PlayerStatistics {
     public int winCount(Player p) {
         return numberOfWins.get(p);
     }
-
-    public void print() {
-        System.out.println("PRINTING");
-        numberOfWins.keySet()
-                .stream()
-                .forEach(key -> System.out.println("key: " + key + ", val: " + numberOfWins.get(key)));
-    }
 }
