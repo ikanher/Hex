@@ -85,4 +85,9 @@
         <property name='max' value='500' />
     </module>
 
+    <!-- Do dont run checkstyle for GUI -->
+    <module name="SuppressionFilter">
+        <property name="file" value="skipped_files.xml" />
+    </module>
+
 </module>

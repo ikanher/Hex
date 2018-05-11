@@ -33,7 +33,6 @@ public class ResultDatabase extends Database {
      */
     public PlayerStatistics getPlayerStatistics(Player p) {
         PlayerStatistics stats = new PlayerStatistics(p);
-        // select loser_id, count(loser_id) from GameResult where winner_id = 2 group by loser_id;
         String sql = "SELECT p.name, COUNT(loser_id) as count FROM GameResult gr"
                 + " JOIN PLAYER p ON gr.loser_id = p.id"
                 + " WHERE winner_id = (SELECT id FROM Player WHERE name = ?)"
