@@ -28,11 +28,11 @@ Sovelluksen järjestelmätestaus on suoritettu manuaalisesti.
 
 ### Asennus ja konfigurointi
 
-Sovellus on haettu ja sitä on testattu [käyttöohjeen](https://github.com/mluukkai/OtmTodoApp/blob/master/dokumentaatio/kayttoohje.md) kuvaamalla tavalla Linux-ympäristössä siten, että sovelluksen käynnistyshakemistossa on ollut käyttöohjeen kuvauksen mukainen _config.properties_-tiedosto.
+Sovellus on haettu ja sitä on testattu [käyttöohjeen](https://github.com/ikanher/otm-harjoitustyo/blob/master/dokumentointi/kayttoohje.md) kuvaamalla tavalla Linux-ympäristössä siten, että sovelluksen _src/main/resources_ hakemistossa on ollut käyttöohjeen kuvauksen mukainen _config.properties_-tiedosto.
 
 ### Toiminnallisuudet
 
-Kaikki [määrittelydokumentin](https://github.com/mluukkai/OtmTodoApp/blob/master/dokumentaatio/vaatimusmaarittely.md#perusversion-tarjoama-toiminnallisuus) ja käyttöohjeen listaamat toiminnallisuudet on käyty läpi.
+Kaikki [määrittelydokumentin](https://github.com/ikanher/otm-harjoitustyo/blob/master/dokumentointi/vaatimusmaarittely.md) ja käyttöohjeen listaamat toiminnallisuudet on käyty läpi.
 
 ## Sovellukseen jääneet laatuongelmat
 

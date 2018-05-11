@@ -16,6 +16,10 @@ Sisältää ei-logiikkaa sisältävät pelin osat kuten pelilauta, pelisolu, pel
 
 Sisältää itse pelin logiikkaan liittyvät luokat.
 
+* hex.database
+
+Tietokantatoiminnallisuuden sisältävät luokat.
+
 ## Luokkakaavio
 
 Kuvataan vielä eri luokkien välisiä yhteyksiä luokkakaaviolla
@@ -42,7 +46,7 @@ Hexameter kirjaston solut muunnet JavaFX:n [Polygon](https://docs.oracle.com/jav
 
 Pelinäkymän luomisesta vastaa GUI luokan metodi gameScreen.
 
-Lopetusnäkymä sisältää tällä hetkellä vain tiedon pelin voittajasta, mahdollisuuden pelata uusintapeli, palata aloitusruutuun tai lopettaa peli. Lopetusnäkymän piirtämisestä vastaa GUI luokan metodi gameEndScreen.
+Lopetusnäkymä sisältää tällä hetkellä tiedon pelin voittajasta, mahdollisuuden pelata uusintapeli, palata aloitusruutuun tai lopettaa peli, sekä tilastoja voittajan aiemmista voitoista. Lopetusnäkymän piirtämisestä vastaa GUI luokan metodi gameEndScreen.
 
 ## Päätoiminnallisuudet
 
@@ -50,7 +54,7 @@ Pelin suurin toiminnallisuus on yksittäisen solun klikkaaminen ja kuvataankin s
 
 ### Pelisolun klikkaaminen
 
-Kun käyttäjä klikkaa _3x3_ pelilaudalla tyhjään soluun niin, että peli ei päädy voittoon toimii sovelluslogiikka seuraavasti:
+Kun käyttäjä klikkaa pelilaudalla tyhjään soluun niin, että peli ei päädy voittoon toimii sovelluslogiikka seuraavasti:
 
 <img src="https://github.com/ikanher/otm-harjoitustyo/blob/master/dokumentointi/images/click-on-cell-sequence-v3.png" />
 
