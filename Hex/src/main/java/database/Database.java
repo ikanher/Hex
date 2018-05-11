@@ -6,6 +6,11 @@
 package database;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -33,14 +38,23 @@ public class Database {
     }
 
     public static String getDatabaseFile(boolean production) throws Exception {
+        initProperties();
         Properties properties = new Properties();
-        properties.load(ClassLoader.getSystemResourceAsStream("config.properties"));
+        properties.load(new FileInputStream("config.properties"));
         String dbFile = properties.getProperty("dbFile");
         String dbPath = properties.getProperty("dbPath");
         if (production) {
             return dbPath + File.separator + dbFile;
         } else {
             return dbPath + File.separator + "test-" + dbFile;
+        }
+    }
+
+    private static void initProperties() throws Exception {
+        Path config = Paths.get("config.properties");
+        if (!Files.exists(config)) {
+            InputStream is = ClassLoader.getSystemResourceAsStream("config.properties");
+            Files.copy(is, config);
         }
     }
 }
