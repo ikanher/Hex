@@ -6,7 +6,6 @@
 package database;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -22,8 +21,8 @@ public class Database {
 
     public Database(boolean production) {
         try {
-            String uri = getDatabaseFile(production);
-            connection = DriverManager.getConnection("jdbc:sqlite:" + uri);
+            String dbFile = getDatabaseFile(production);
+            connection = DriverManager.getConnection("jdbc:sqlite:" + dbFile);
         } catch (SQLException e) {
             System.err.println("Result saving disabled! Failed to create database connection: " + e.toString());
         } catch (Exception e) {
@@ -35,9 +34,9 @@ public class Database {
 
     public static String getDatabaseFile(boolean production) throws Exception {
         Properties properties = new Properties();
-        properties.load(new FileInputStream("config.properties"));
-        String dbPath = properties.getProperty("dbPath");
+        properties.load(ClassLoader.getSystemResourceAsStream("config.properties"));
         String dbFile = properties.getProperty("dbFile");
+        String dbPath = properties.getProperty("dbPath");
         if (production) {
             return dbPath + File.separator + dbFile;
         } else {

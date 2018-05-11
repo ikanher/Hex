@@ -4,7 +4,12 @@ Lataa tiedosto [Hex-0.2-SNAPSHOT.jar](https://github.com/ikanher/otm-harjoitusty
 
 ## Konfigurointi
 
-Ohjelma ei vaadi erillistä ulkopuolista konfigurointia.
+Ohjelma olettaa, että _src/main/resources_ hakemistossa on konfiguraatiotiedosto _config.properties_, joka määrittelee polun, sekä tiedoston, johon tietokanta luodaan. Tiedoston muoto on seuraava
+
+```
+dbPath=.
+dbFile=hex.db
+```
 
 ## Ohjelman käynnistäminen
 
@@ -37,4 +42,6 @@ Kun jompikumpi pelaajista voittaa peli, pelimoottori tunnistaa voiton ja siirtä
 ### Pelin lopetusruutu
 
 Lopetusruudussa ilmoitetaan pelin voittaja ja annetaan mahdollisuus pelata uudellee, palata aloitusruutuun tai lopettaa pelin pelaaminen.
+
+Lisäksi lopetusruudussa näytetään tilastoja niistä pelaajista, jotka ovat myös hävinneet pelin voittajalle.
 

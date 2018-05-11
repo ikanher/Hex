@@ -22,5 +22,8 @@
 | 27.4. | 7    | voiton tunnistus valmis + aloitus- ja lopetusruutu |
 | 28.4. | 5    | AI? |
 | 1.5.  | 2    | dokumentaatio, javadocit, uusi release |
+| 10.5. | 3    | voittojen tallennus tietokantaan |
+| 11.5. | 5    | voittojen tallennus tietokantaan |
+| 11.5. | 3    | dokumentaation päivitys yms |
 
-Yhteensä: 74
+Yhteensä: 85

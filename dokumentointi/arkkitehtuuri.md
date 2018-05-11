@@ -20,7 +20,7 @@ Sisältää itse pelin logiikkaan liittyvät luokat.
 
 Kuvataan vielä eri luokkien välisiä yhteyksiä luokkakaaviolla
 
-<img src="https://github.com/ikanher/otm-harjoitustyo/blob/master/dokumentointi/images/class-diagram-v3.png" />
+<img src="https://github.com/ikanher/otm-harjoitustyo/blob/master/dokumentointi/images/class-diagram-v4.png" />
 
 ## Käyttöliittymä
 
@@ -52,5 +52,5 @@ Pelin suurin toiminnallisuus on yksittäisen solun klikkaaminen ja kuvataankin s
 
 Kun käyttäjä klikkaa _3x3_ pelilaudalla tyhjään soluun niin, että peli ei päädy voittoon toimii sovelluslogiikka seuraavasti:
 
-<img src="https://github.com/ikanher/otm-harjoitustyo/blob/master/dokumentointi/images/click-on-cell-sequence-v2.png" />
+<img src="https://github.com/ikanher/otm-harjoitustyo/blob/master/dokumentointi/images/click-on-cell-sequence-v3.png" />
 

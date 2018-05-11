@@ -6,19 +6,16 @@ Game->+GameLogic: playAt(currentPlayer, 3, 3)
 GameLogic->+Board: getCellAt(3, 3)
 Board->-GameLogic: cell
 GameLogic->Cell: setColor(currentPlayer.getColor())
-GameLogic->+Cell: getId
-Cell->-GameLogic: cellId
-GameLogic->+Board: getNeighborCells(3, 3)
-Board->-GameLogic: List<Cell> cellList
-GameLogic->Graph: foreach cell in celList addEdge(cellId, cell.getId())
 GameLogic->-Game:
 Game->-GUI:
 GUI->+Game: isWin()
 Game->+GameLogic: checkWin(currentPlayer)
 GameLogic->*GameEndChecker: new GameEndChecker(Graph, currentPlayer.getColor())
 GameEndChecker->GameLogic: GameEndChecker
-GameLogic->GameEndChecker: isWin()
-GameEndChecker->GameLogic: false
+GameLogic->+GameEndChecker: isWin()
+GameEndChecker->-GameLogic: false
 GameLogic->-Game: false
-Game->-GUI: false
+Game->-GUI: GameResult
+GUI->+GameResult: isWin
+GameResult->-GUI: false
 GUI->User:

@@ -24,7 +24,6 @@ public class PlayerStatistics {
     }
 
     public void addWin(Player opponent, int count) {
-        System.out.println("Adding a win for opponent: " + opponent + ", count: " + count);
         playersWon.add(opponent);
         numberOfWins.put(opponent, count);
     }

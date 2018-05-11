@@ -14,9 +14,13 @@ Pelin tarkoituksena on molempien pelaajien pyrkiä yhdistämään omat päätyns
 
 [Arkkitehtuuri](https://github.com/ikanher/otm-harjoitustyo/blob/master/dokumentointi/arkkitehtuuri.md)
 
+[Testausdokumentti](https://github.com/ikanher/otm-harjoitustyo/blob/master/dokumentointi/testaus.md)
+
 [Tuntikirjanpito](https://github.com/ikanher/otm-harjoitustyo/blob/master/dokumentointi/tuntikirjanpito.md)
 
 ## Releaset
+
+[Loppupalautus](https://github.com/ikanher/otm-harjoitustyo/releases/tag/loppupalautus)
 
 [Viikko6](https://github.com/ikanher/otm-harjoitustyo/releases/tag/viikko6)
 
@@ -40,7 +44,7 @@ Komento
 mvn package
 ```
 
-generoi hakemistoon _target_ suoritettavan jar-tiedoston _Hex-0.1-SNAPSHOT-jar-with-dependencies.jar_
+Generoi hakemistoon _target_ suoritettavan jar-tiedoston _Hex-1.0.jar_
 
 ### Testaus
 
