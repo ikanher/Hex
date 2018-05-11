@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Lataa tiedosto [Hex-0.2-SNAPSHOT.jar](https://github.com/ikanher/otm-harjoitustyo/releases/tag/viikko6)
+Lataa tiedosto [Hex-0.1.jar](https://github.com/ikanher/otm-harjoitustyo/releases/tag/loppupalautus)
 
 ## Konfigurointi
 
