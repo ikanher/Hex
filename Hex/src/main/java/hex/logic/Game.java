@@ -5,9 +5,12 @@
  */
 package hex.logic;
 
+import database.ResultDatabase;
 import hex.domain.Board;
+import hex.domain.GameResult;
 import hex.domain.HexColor;
 import hex.domain.Player;
+import hex.domain.PlayerStatistics;
 
 /**
  * Class presenting a single game.
@@ -22,6 +25,8 @@ public class Game {
     private Player red;
     private Player blue;
     private Player currentPlayer;
+    private Player winner;
+    private ResultDatabase db;
 
     /**
      * Create a new game for players "Red" and "Blue"
@@ -34,6 +39,9 @@ public class Game {
         blue = new Player("Blue", HexColor.BLUE);
         red = new Player("Red", HexColor.RED);
         currentPlayer = blue;
+
+        // open database in production mode
+        db = new ResultDatabase(true);
     }
 
     /**
@@ -49,6 +57,9 @@ public class Game {
         blue = new Player(bluePlayerName, HexColor.BLUE);
         red = new Player(redPlayerName, HexColor.RED);
         currentPlayer = blue;
+
+        // open database in production mode
+        db = new ResultDatabase(true);
     }
 
     public Player getCurrentPlayer() {
@@ -71,12 +82,18 @@ public class Game {
     }
 
     /**
-     * Checks if game has been won.
+     * Returns a game result object representing current game state.
      *
-     * @return true if current player won the game
+     * @return GameResult object
      */
-    public boolean isWin() {
-        return logic.checkWin(currentPlayer);
+    public GameResult gameResult() {
+        GameResult result = new GameResult(red, blue);
+        if (logic.checkWin(currentPlayer)) {
+            winner = currentPlayer;
+            result.setWinner(currentPlayer);
+            db.saveResult(result);
+        }
+        return result;
     }
 
     public Board getBoard() {
@@ -93,5 +110,9 @@ public class Game {
         } else {
             currentPlayer = blue;
         }
+    }
+
+    public PlayerStatistics getWinnerStatistics() {
+        return db.getPlayerStatistics(winner);
     }
 }

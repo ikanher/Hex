@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import hex.domain.GameResult;
 import hex.domain.HexColor;
 import hex.logic.Game;
 import org.junit.After;
@@ -72,7 +73,8 @@ public class GameTest {
         game.playAt(2, 4);
         game.switchTurns();
         game.playAt(4, 2);
-        assertTrue(game.isWin());
+        GameResult result = game.gameResult();
+        assertTrue(result.isWin());
     }
     @Test
     public void testRedWinsTheGame() {
@@ -87,6 +89,7 @@ public class GameTest {
         game.playAt(4, 4);
         game.switchTurns();
         game.playAt(2, 4);
-        assertTrue(game.isWin());
+        GameResult result = game.gameResult();
+        assertTrue(result.isWin());
     }
 }

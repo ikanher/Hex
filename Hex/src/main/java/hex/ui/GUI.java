@@ -5,8 +5,10 @@
  */
 package hex.ui;
 
+import hex.domain.GameResult;
 import hex.domain.HexColor;
 import hex.domain.Player;
+import hex.domain.PlayerStatistics;
 import hex.logic.Game;
 import java.util.Collection;
 import javafx.application.Application;
@@ -19,9 +21,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
@@ -32,6 +32,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.codetome.hexameter.core.api.Hexagon;
 
@@ -65,7 +68,7 @@ public class GUI extends Application {
     private static final int HEIGHT = 480;
 
     // board sizes
-    private static final int SIZE_TINY = 7;
+    private static final int SIZE_TINY = 3;
     private static final int SIZE_SMALL = 11;
     private static final int SIZE_MEDIUM = 13;
     private static final int SIZE_LARGE = 19;
@@ -122,12 +125,17 @@ public class GUI extends Application {
         BorderPane pane = new BorderPane();
 
         GridPane innerPane = new GridPane();
+        innerPane.setVgap(10);
         innerPane.setAlignment(Pos.CENTER);
 
         String winnerName = game.getCurrentPlayer().getName();
-        Label winner = new Label(winnerName + " WON!");
+        Label winner = new Label("Well done, " + winnerName + ", you won!!");
+        winner.setFont(Font.font("Monospaced", 20));
         winner.setAlignment(Pos.CENTER);
         innerPane.add(winner, 0, 0);
+
+        GridPane stats = winnerStatistics();
+        innerPane.add(stats, 0, 1);
 
         playButton = new Button("Play again!");
         playButton.setOnAction(event -> gameScreen(stage));
@@ -142,13 +150,37 @@ public class GUI extends Application {
         buttonBox.setAlignment(Pos.CENTER);
         buttonBox.getChildren().addAll(playButton, gameSetupButton, quitButton);
 
-        innerPane.add(buttonBox, 0, 1);
+        innerPane.add(buttonBox, 0, 2);
         pane.setCenter(innerPane);
 
         Scene scene = new Scene(pane, WIDTH, HEIGHT);
         stage.setScene(scene);
         stage.setTitle("More Hex?");
         stage.show();
+    }
+
+    private GridPane winnerStatistics() {
+        GridPane pane = new GridPane();
+        pane.setHgap(5);
+        pane.setVgap(5);
+        pane.setAlignment(Pos.CENTER);
+
+        Label nameHeader = new Label("Who lost against you?");
+        nameHeader.setFont(Font.font("Monospaced", 10));
+        Label countHeader = new Label("How many times?");
+        countHeader.setFont(Font.font("Monospaced", 10));
+
+        pane.add(nameHeader, 0, 0);
+        pane.add(countHeader, 1, 0);
+
+        PlayerStatistics stats = game.getWinnerStatistics();
+        for (int i = 0; i < stats.getPlayersWon().size(); i++) {
+            Player p = stats.getPlayersWon().get(i);
+            int winCount = stats.winCount(p);
+            pane.add(new Label(p.getName()), 0, i + 1);
+            pane.add(new Label("" + winCount), 1, i + 1);
+        }
+        return pane;
     }
 
     private void gameScreen(Stage stage) {
@@ -161,6 +193,8 @@ public class GUI extends Application {
         VBox top = new VBox();
         infoText = new Label(game.getCurrentPlayer().getName() + " starts the game..");
         infoText.setAlignment(Pos.CENTER);
+        infoText.setFont(Font.font("Monospaced", FontWeight.BOLD, 12));
+        infoText.setTextFill(Color.WHITE);
 
         HBox gameInfo = new HBox();
         gameInfo.setAlignment(Pos.CENTER);
@@ -328,7 +362,8 @@ public class GUI extends Application {
     }
 
     private void checkForWin() {
-        if (game.isWin()) {
+        GameResult result = game.gameResult();
+        if (result.isWin()) {
             isRunning = false;
             gameEndScreen(mainStage);
         }
