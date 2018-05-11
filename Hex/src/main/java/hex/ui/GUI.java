@@ -12,6 +12,7 @@ import hex.domain.PlayerStatistics;
 import hex.logic.Game;
 import java.util.Collection;
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -189,6 +190,8 @@ public class GUI extends Application {
         game = new Game(size, bluePlayerName.getText(), redPlayerName.getText());
 
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(10));
+
         VBox top = new VBox();
         infoText = new Label(game.getCurrentPlayer().getName() + " starts the game..");
         infoText.setAlignment(Pos.CENTER);
@@ -201,6 +204,12 @@ public class GUI extends Application {
 
         pane.setTop(gameInfo);
         setBackground(pane);
+
+        HBox buttons = new HBox();
+        Button gameSetupButton = new Button("Back to game setup");
+        gameSetupButton.setOnAction(event -> startScreen(stage));
+        buttons.getChildren().add(gameSetupButton);
+        pane.setBottom(buttons);
 
         Group gameWindow = new Group();
         pane.setCenter(gameWindow);
