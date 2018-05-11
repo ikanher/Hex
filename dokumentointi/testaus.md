@@ -28,7 +28,7 @@ Sovelluksen järjestelmätestaus on suoritettu manuaalisesti.
 
 ### Asennus ja konfigurointi
 
-Sovellus on haettu ja sitä on testattu [käyttöohjeen](https://github.com/ikanher/otm-harjoitustyo/blob/master/dokumentointi/kayttoohje.md) kuvaamalla tavalla Linux-ympäristössä siten, että sovelluksen _src/main/resources_ hakemistossa on ollut käyttöohjeen kuvauksen mukainen _config.properties_-tiedosto.
+Sovellus on haettu ja sitä on testattu [käyttöohjeen](https://github.com/ikanher/otm-harjoitustyo/blob/master/dokumentointi/kayttoohje.md) kuvaamalla tavalla Linux-ympäristössä siten, että sovelluksen juurihakemistossa on ollut käyttöohjeen kuvauksen mukainen _config.properties_-tiedosto.
 
 ### Toiminnallisuudet
 

@@ -4,7 +4,9 @@ Lataa tiedosto [Hex-0.1.jar](https://github.com/ikanher/otm-harjoitustyo/release
 
 ## Konfigurointi
 
-Ohjelma olettaa, että _src/main/resources_ hakemistossa on konfiguraatiotiedosto _config.properties_, joka määrittelee polun, sekä tiedoston, johon tietokanta luodaan. Tiedoston muoto on seuraava
+Juurihakemistossa on sovelluksen konfiguraatiotiedosto, _config.properties_. Siellä määritetään tietokantatiedoston polku ja nimi. Mikäli tiedostoa ei löydy, kopioidaan sen oletusversio paketin _resources_ hakemistosta.
+
+Sisältö on seuraavanlainen:
 
 ```
 dbPath=.
