@@ -6,7 +6,7 @@ Ohjelma on rakenteeltaan jaettu kolmeen eri pakkaukseen.
 
 * hex.ui
 
-Sisältää sovelluksen käyttöliittymään liittyvän koodin, joka on JavaFX:llä toteutettu ja hyödyntää itse pelilaudan rakentamisessa upeata [Hexameter](https://github.com/Hexworks/hexameter) kirjastoa.
+Sisältää sovelluksen käyttöliittymään liittyvän koodin, joka on JavaFX:llä toteutettu ja hyödyntää itse pelilaudan rakentamisessa upeaa [Hexameter](https://github.com/Hexworks/hexameter) kirjastoa.
 
 * hex.domain
 
@@ -24,7 +24,7 @@ Tietokantatoiminnallisuuden sisältävät luokat.
 
 Kuvataan vielä eri luokkien välisiä yhteyksiä luokkakaaviolla
 
-<img src="https://github.com/ikanher/otm-harjoitustyo/blob/master/dokumentointi/images/class-diagram-v4.png" />
+<img src="https://github.com/ikanher/otm-harjoitustyo/blob/master/dokumentointi/images/class-diagram-v5.png" />
 
 ## Käyttöliittymä
 

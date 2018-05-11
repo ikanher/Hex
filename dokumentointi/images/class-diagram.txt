@@ -2,5 +2,5 @@
 [Game]1-1[GameLogic],[Game]1-2[Player],[Game]1-1[ResultDatabase],[Game]-.-[GameResult]
 [ResultDatabase]->[Database],[ResultDatabase]-.-[PlayerStatistics],[ResultDatabase]-.-[GameResult]
 [Database]1-1[Initializer],
-[GameLogic]1-1[Board],[GameLogic]-.->[GameEndChecker],[GameLogic]-.->[Player]
+[GameLogic]1-1[Board],[GameLogic]-.->[GameEndChecker],[GameLogic]-.-[Player]
 [GameEndChecker]<-[UnionFindEndChecker],[Board]1-size[Cell]

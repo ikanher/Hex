@@ -14,11 +14,11 @@ Koska sovelluksen luonne on kahden pelaajan peli, on käyttäjiä luonollisesti 
 
 ## Käyttöliittymäluonnos
 
-Sovellus koostuu neljästä eri näkymästä
+Sovellus koostuu kolmesta eri näkymästä
 
 1. Aloitusruutu, jossa kysytään pelaajien nimet ja pelilaudan koko
 2. Peliruutu, jossa näytetään pelilauta ja jossa itse pelin pelaaminen suoritetaan
-3. Lopetusruutu, joka tulee näkyviin pelin jälkeen. Lopetusruudulla näkyy pelin voittaja. Lopetusruudulla on myös mahdollisuus aloittaa peli uudelleen, lopettaa pelin pelaaminen tai palata alkuruutuun, jossa voi muuttaa pelin asetuksia. Lopetusruudulle näytetään myös tilastoja siitä, ketkä muut pelaajat ovat hävinneet peli voittajalle ja kuinka monta kertaa.
+3. Lopetusruutu, joka tulee näkyviin pelin jälkeen. Lopetusruudulla näkyy pelin voittaja. Lopetusruudulla on myös mahdollisuus aloittaa peli uudelleen, lopettaa pelin pelaaminen tai palata alkuruutuun, jossa voi muuttaa pelin asetuksia. Lopetusruudulle näytetään myös tilastoja siitä, ketkä muut pelaajat ovat hävinneet pelin voittajalle ja kuinka monta kertaa.
 
 ## Perusversion tarjoama toiminnallisuus
 

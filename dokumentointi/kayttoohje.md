@@ -16,7 +16,7 @@ dbFile=hex.db
 Ohjelma käynnistetään komennolla 
 
 ```
-java -jar Hex-0.2-SNAPSHOT.jar
+java -jar Hex-0.1.jar
 ```
 
 ## Peli
@@ -31,13 +31,13 @@ Peli alkaa "Play!" nappia klikkaamalla.
 
 ### Pelin pelaaminen
 
-Pelin tarkoituksena on yhdistää yhtenäisellä ketjulla pelaajan omat laudan päät yhteen. Sininen pelaa vasemmalta oikealla ja punainen ylhäältä alas. Sininen pelaaja siis pyrkii, yksittäisellä ketjulla yhdistämään pelilaudan vasemman ja oikean reunan.
+Pelin tarkoituksena on yhdistää yhtenäisellä ketjulla pelaajan omat laudan päät yhteen. Sininen pelaa vasemmalta oikealla ja punainen ylhäältä alas. Sininen pelaaja siis pyrkii yhtenäisellä ketjulla yhdistämään pelilaudan vasemman ja oikean reunan.
 
 Pelin yläreunassa lukee tieto siitä kumpi pelaaja pelaa seuraavaksi.
 
 Itse peliä pelataan klikkaamalla vuorotellen pelisoluihin, kunnes jompikumpi pelaajista on voittanut pelin. Pelissä ei ole mahdollista päätyä tasapeliin.
 
-Kun jompikumpi pelaajista voittaa peli, pelimoottori tunnistaa voiton ja siirtää pelaajan lopetusruutuun.
+Kun jompikumpi pelaajista voittaa pelin, pelimoottori tunnistaa voiton ja siirtää pelaajan lopetusruutuun.
 
 ### Pelin lopetusruutu
 
